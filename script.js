@@ -63,3 +63,13 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         }
     });
 });
+
+
+// Ensure menu closes after selection
+document.querySelectorAll('nav ul li a').forEach(item => {
+  item.addEventListener('click', () => {
+    document.getElementById('nav-menu').classList.remove('show');
+  });
+});
+
+
