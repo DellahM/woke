@@ -1,0 +1,17 @@
+{
+  "name": "woke-tech-website",
+  "version": "1.0.0",
+  "description": "WOKE - Premium Developer Web Services in Kenya",
+  "scripts": {
+    "start": "live-server --port=3000",
+    "build": "mkdir -p dist && cp -r *.html css/ js/ images/ dist/ || true",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "netlify-cms-app": "^2.15.72",
+    "netlify-identity-widget": "^1.9.2"
+  },
+  "devDependencies": {
+    "live-server": "^1.2.2"
+  }
+}

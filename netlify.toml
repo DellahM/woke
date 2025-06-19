@@ -1,0 +1,35 @@
+[build]
+  command = "npm run build"
+  publish = "."
+  functions = "functions"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Access-Control-Allow-Origin = "*"
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+
+[[redirects]]
+  from = "/admin/*"
+  to = "/admin/index.html"
+  status = 200
+
+[[plugins]]
+  package = "netlify-plugin-cms"
+
+  [build]
+  command = "npm run build"
+  publish = "."
+  functions = "netlify/functions"  # Path to functions directory
+
+# For redirects/headers (keep your existing rules)
+[[redirects]]
+  from = "/admin/*"
+  to = "/admin/index.html"
+  status = 200
+
+
+
+  [[plugins]]
+  package = "@netlify/plugin-functions-install-core"
