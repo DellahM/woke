@@ -1,20 +1,27 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Projects - Woke - Premium Developer Web Services in Kenya</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="projects.css">
+    <title>Our Projects - WOKE Tech</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/projects.css">
+    <!-- Add Netlify CMS script -->
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
+
 <body>
+    <!-- Admin Link (visible when logged in) -->
+    <div id="admin-link" style="display: none; background: #f0f0f0; padding: 10px; text-align: center;">
+        <a href="/admin/" class="btn">Admin Dashboard</a>
+    </div>
+
     <!-- Header Section -->
     <header id="header">
         <div class="container header-container">
             <img src="images/woke-logo.png" alt="WokeBusiness Tech" class="logo-img">
-  <span class="logo-text">WOKE TECH<span>.</span></span></a>
-    <div class="mobile-menu-toggle">&#9776;</div>
+            <span class="logo-text">WOKE TECH<span>.</span></span>
+            <div class="mobile-menu-toggle">&#9776;</div>
             <nav>
                 <ul id="nav-menu">
                     <li><a href="index.html">Home</a></li>
@@ -51,247 +58,10 @@
                 <button class="filter-btn" data-filter="ecommerce">E-Commerce</button>
                 <button class="filter-btn" data-filter="saas">SaaS</button>
             </div>
-            
-            <div class="project-grid projects-container">
-                <!-- Project 1 -->
-                <div class="project-card" data-category="web ecommerce">
-                    <div class="project-image">
-                        <img src="/api/placeholder/600/400" alt="Safari Tours Kenya Website">
-                        <div class="project-tag">E-Commerce</div>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">Safari Tours Kenya</h3>
-                        <div class="project-meta">
-                            <div class="project-client">
-                                <span>👤</span> Kenya Tourism Board
-                            </div>
-                            <div class="project-date">
-                                <span>📅</span> January 2025
-                            </div>
-                        </div>
-                        <p class="project-desc">A comprehensive tourism portal allowing visitors to explore and book safari experiences throughout Kenya. Features include interactive maps, booking system, and payment processing.</p>
-                        <div class="project-details">
-                            <span class="project-detail-item">WordPress</span>
-                            <span class="project-detail-item">WooCommerce</span>
-                            <span class="project-detail-item">Custom Booking System</span>
-                            <span class="project-detail-item">M-Pesa Integration</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://safaritours.ke" target="_blank" class="btn">Visit Website</a>
-                            <a href="#" class="btn btn-outline">Case Study</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Project 2 -->
-                <div class="project-card" data-category="mobile">
-                    <div class="project-image">
-                        <img src="/api/placeholder/600/400" alt="M-Health Mobile App">
-                        <div class="project-tag">Mobile App</div>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">M-Health Tracker</h3>
-                        <div class="project-meta">
-                            <div class="project-client">
-                                <span>👤</span> Ministry of Health
-                            </div>
-                            <div class="project-date">
-                                <span>📅</span> November 2024
-                            </div>
-                        </div>
-                        <p class="project-desc">A health tracking application that allows users to monitor vital health metrics, schedule doctor appointments, and access medical records securely. Available on both Android and iOS.</p>
-                        <div class="project-details">
-                            <span class="project-detail-item">React Native</span>
-                            <span class="project-detail-item">Firebase</span>
-                            <span class="project-detail-item">Health API</span>
-                            <span class="project-detail-item">Biometric Authentication</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://mhealth.co.ke" target="_blank" class="btn">Visit Website</a>
-                            <a href="#" class="btn btn-outline">Case Study</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Project 3 -->
-                <div class="project-card" data-category="ecommerce">
-                    <div class="project-image">
-                        <img src="/api/placeholder/600/400" alt="African Crafts Marketplace">
-                        <div class="project-tag">E-Commerce</div>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">African Crafts Marketplace</h3>
-                        <div class="project-meta">
-                            <div class="project-client">
-                                <span>👤</span> Artisan Collective
-                            </div>
-                            <div class="project-date">
-                                <span>📅</span> August 2024
-                            </div>
-                        </div>
-                        <p class="project-desc">An online marketplace connecting artisans from across Africa with global buyers. Features multi-vendor capabilities, international shipping, and secure payment options.</p>
-                        <div class="project-details">
-                            <span class="project-detail-item">Shopify</span>
-                            <span class="project-detail-item">Custom Theme</span>
-                            <span class="project-detail-item">Multi-vendor Plugin</span>
-                            <span class="project-detail-item">International Shipping API</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://africanartisans.shop" target="_blank" class="btn">Visit Website</a>
-                            <a href="#" class="btn btn-outline">Case Study</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Project 4 -->
-                <div class="project-card" data-category="mobile">
-                    <div class="project-image">
-                        <img src="/api/placeholder/600/400" alt="M-Farming Solution">
-                        <div class="project-tag">Mobile App</div>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">M-Farming Solution</h3>
-                        <div class="project-meta">
-                            <div class="project-client">
-                                <span>👤</span> AgriTech Kenya
-                            </div>
-                            <div class="project-date">
-                                <span>📅</span> May 2024
-                            </div>
-                        </div>
-                        <p class="project-desc">A mobile application helping farmers track crop growth, access market prices, receive weather alerts, and connect with agricultural experts for advice.</p>
-                        <div class="project-details">
-                            <span class="project-detail-item">Flutter</span>
-                            <span class="project-detail-item">Django Backend</span>
-                            <span class="project-detail-item">Weather API</span>
-                            <span class="project-detail-item">SMS Integration</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://mfarming.co.ke" target="_blank" class="btn">Visit Website</a>
-                            <a href="#" class="btn btn-outline">Case Study</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Project 5 -->
-                <div class="project-card" data-category="saas web">
-                    <div class="project-image">
-                        <img src="/api/placeholder/600/400" alt="Property Management System">
-                        <div class="project-tag">SaaS</div>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">Nyumba Property Manager</h3>
-                        <div class="project-meta">
-                            <div class="project-client">
-                                <span>👤</span> Real Estate Association
-                            </div>
-                            <div class="project-date">
-                                <span>📅</span> March 2024
-                            </div>
-                        </div>
-                        <p class="project-desc">A comprehensive property management system for landlords and property managers. Features rent collection, maintenance requests, tenant management, and financial reporting.</p>
-                        <div class="project-details">
-                            <span class="project-detail-item">Vue.js</span>
-                            <span class="project-detail-item">Laravel</span>
-                            <span class="project-detail-item">MySQL</span>
-                            <span class="project-detail-item">Payment Gateway</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://nyumba.app" target="_blank" class="btn">Visit Website</a>
-                            <a href="#" class="btn btn-outline">Case Study</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Project 6 -->
-                <div class="project-card" data-category="web">
-                    <div class="project-image">
-                        <img src="/api/placeholder/600/400" alt="Nairobi Business Directory">
-                        <div class="project-tag">Web Platform</div>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">Nairobi Business Directory</h3>
-                        <div class="project-meta">
-                            <div class="project-client">
-                                <span>👤</span> Nairobi Chamber of Commerce
-                            </div>
-                            <div class="project-date">
-                                <span>📅</span> January 2024
-                            </div>
-                        </div>
-                        <p class="project-desc">A comprehensive business directory for Nairobi featuring location-based search, business profiles, ratings and reviews, and premium listing options for businesses.</p>
-                        <div class="project-details">
-                            <span class="project-detail-item">React</span>
-                            <span class="project-detail-item">Node.js</span>
-                            <span class="project-detail-item">MongoDB</span>
-                            <span class="project-detail-item">Google Maps API</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://nairobibiz.co.ke" target="_blank" class="btn">Visit Website</a>
-                            <a href="#" class="btn btn-outline">Case Study</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Project 7 -->
-                <div class="project-card" data-category="ecommerce">
-                    <div class="project-image">
-                        <img src="/api/placeholder/600/400" alt="MaThree Food Delivery">
-                        <div class="project-tag">E-Commerce</div>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">MaThree Food Delivery</h3>
-                        <div class="project-meta">
-                            <div class="project-client">
-                                <span>👤</span> MaThree Foods Ltd
-                            </div>
-                            <div class="project-date">
-                                <span>📅</span> October 2023
-                            </div>
-                        </div>
-                        <p class="project-desc">A food delivery platform connecting local restaurants with customers across Nairobi. Features include real-time order tracking, restaurant management dashboard, and driver mobile app.</p>
-                        <div class="project-details">
-                            <span class="project-detail-item">Angular</span>
-                            <span class="project-detail-item">Express.js</span>
-                            <span class="project-detail-item">PostgreSQL</span>
-                            <span class="project-detail-item">Socket.io</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://mathree.co.ke" target="_blank" class="btn">Visit Website</a>
-                            <a href="#" class="btn btn-outline">Case Study</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Project 8 -->
-                <div class="project-card" data-category="saas web">
-                    <div class="project-image">
-                        <img src="/api/placeholder/600/400" alt="EduKE Learning Platform">
-                        <div class="project-tag">SaaS</div>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">EduKE Learning Platform</h3>
-                        <div class="project-meta">
-                            <div class="project-client">
-                                <span>👤</span> Ministry of Education
-                            </div>
-                            <div class="project-date">
-                                <span>📅</span> July 2023
-                            </div>
-                        </div>
-                        <p class="project-desc">An e-learning platform built for Kenyan schools featuring course management, student progress tracking, interactive assignments, and video conferencing for remote classes.</p>
-                        <div class="project-details">
-                            <span class="project-detail-item">Next.js</span>
-                            <span class="project-detail-item">Django REST</span>
-                            <span class="project-detail-item">AWS</span>
-                            <span class="project-detail-item">WebRTC</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://eduke.ac.ke" target="_blank" class="btn">Visit Website</a>
-                            <a href="#" class="btn btn-outline">Case Study</a>
-                        </div>
-                    </div>
-                </div>
+
+            <!-- Projects will be dynamically loaded here from Netlify CMS -->
+            <div class="project-grid projects-container" id="projects-container">
+                <!-- Projects will be inserted here by JavaScript -->
             </div>
         </div>
     </section>
@@ -362,6 +132,62 @@
 
     <!-- JavaScript -->
     <script src="script.js"></script>
+    <script>
+        // Netlify Identity Widget
+        if (window.netlifyIdentity) {
+            window.netlifyIdentity.on("init", user => {
+                if (!user) {
+                    window.netlifyIdentity.on("login", () => {
+                        document.getElementById("admin-link").style.display = "block";
+                        window.location.href = "/admin/";
+                    });
+                } else {
+                    document.getElementById("admin-link").style.display = "block";
+                }
+            });
+        }
+
+        // Fetch projects from Netlify CMS
+        document.addEventListener('DOMContentLoaded', function() {
+            fetch('/projects.json')
+                .then(response => response.json())
+                .then(data => {
+                    const container = document.getElementById('projects-container');
+                    
+                    data.forEach(project => {
+                        const projectCard = `
+                            <div class="project-card" data-category="${project.categories.join(' ')}">
+                                <div class="project-image">
+                                    <img src="${project.image}" alt="${project.title}">
+                                    <div class="project-tag">${project.categories[0]}</div>
+                                </div>
+                                <div class="project-content">
+                                    <h3 class="project-title">${project.title}</h3>
+                                    <div class="project-meta">
+                                        <div class="project-client">
+                                            <span>👤</span> ${project.client}
+                                        </div>
+                                        <div class="project-date">
+                                            <span>📅</span> ${project.date}
+                                        </div>
+                                    </div>
+                                    <p class="project-desc">${project.description}</p>
+                                    <div class="project-details">
+                                        ${project.technologies.map(tech => `<span class="project-detail-item">${tech}</span>`).join('')}
+                                    </div>
+                                    <div class="project-links">
+                                        <a href="${project.website}" target="_blank" class="btn">Visit Website</a>
+                                        ${project.case_study ? `<a href="${project.case_study}" class="btn btn-outline">Case Study</a>` : ''}
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                        container.insertAdjacentHTML('beforeend', projectCard);
+                    });
+                })
+                .catch(error => console.error('Error loading projects:', error));
+        });
+    </script>
     <script src="projects.js"></script>
 </body>
 </html>
