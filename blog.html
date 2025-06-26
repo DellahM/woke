@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - Our Latest Articles</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/blog-slider.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header id="header" class="scrolled">
+        <div class="header-container">
+            <a href="index.html" class="logo">
+                <img src="images/logo.png" alt="Company Logo" class="logo-img">
+                <span class="logo-text">Your<span>Brand</span></span>
+            </a>
+            
+            <button class="mobile-menu-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav>
+                <ul id="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="blog.html" class="active">Blog</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Blog Hero Section -->
+    <section class="hero blog-hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Our Blog</h1>
+                <p class="hero-subtitle">Latest news, articles and insights from our team</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Post Section -->
+    <section class="featured-post">
+        <div class="container">
+            <div class="featured-post-content">
+                <span class="featured-badge">Featured Post</span>
+                <span class="blog-category">Technology</span>
+                <h2><a href="single-post.html">The Future of Web Development in 2023</a></h2>
+                <p class="featured-excerpt">Exploring the latest trends and technologies that are shaping the future of web development this year.</p>
+                <div class="featured-meta">
+                    <span><i class="far fa-calendar"></i> June 15, 2023</span>
+                    <span><i class="far fa-user"></i> By Admin</span>
+                    <span><i class="far fa-clock"></i> 5 min read</span>
+                </div>
+                <a href="single-post.html" class="btn">Read More</a>
+            </div>
+            <div class="featured-post-image">
+                <img src="images/blog1.jpg" alt="Featured Post">
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section with Sidebar -->
+    <section class="section blog-section">
+        <div class="container blog-container">
+            <main class="blog-main">
+                <!-- Blog posts container - this ID matches what your JS is looking for -->
+                <div class="blog-grid" id="blog-grid">
+                    <!-- Loading spinner while posts load -->
+                    <div class="loading-spinner">
+                        <i class="fas fa-spinner fa-spin"></i>
+                        <p>Loading posts...</p>
+                    </div>
+                </div>
+                
+                <!-- Pagination -->
+                <div class="blog-pagination" style="display: none;">
+                    <a href="#" class="btn btn-outline"><i class="fas fa-chevron-left"></i> Previous</a>
+                    <a href="#" class="btn active">1</a>
+                    <a href="#" class="btn">2</a>
+                    <a href="#" class="btn">3</a>
+                    <a href="#" class="btn btn-outline">Next <i class="fas fa-chevron-right"></i></a>
+                </div>
+            </main>
+            
+            <aside class="blog-sidebar">
+                <div class="sidebar-widget">
+                    <h3 class="widget-title">Search</h3>
+                    <form class="search-form blog-search">
+                        <input type="text" placeholder="Search articles...">
+                        <button type="submit"><i class="fas fa-search"></i></button>
+                    </form>
+                </div>
+                
+                <div class="sidebar-widget">
+                    <h3 class="widget-title">Categories</h3>
+                    <ul class="category-list">
+                        <li><a href="#" data-filter="technology">Technology <span>(12)</span></a></li>
+                        <li><a href="#" data-filter="design">Design <span>(8)</span></a></li>
+                        <li><a href="#" data-filter="marketing">Marketing <span>(5)</span></a></li>
+                        <li><a href="#" data-filter="business">Business <span>(7)</span></a></li>
+                        <li><a href="#" data-filter="development">Development <span>(10)</span></a></li>
+                        <li><a href="#" data-filter="all">All Posts</a></li>
+                    </ul>
+                </div>
+                
+                <div class="sidebar-widget">
+                    <h3 class="widget-title">Popular Posts</h3>
+                    <ul class="popular-posts">
+                        <li>
+                            <a href="#">
+                                <div class="popular-post">
+                                    <img src="images/blog-thumb1.jpg" alt="Popular Post">
+                                    <div class="popular-post-content">
+                                        <h4>10 Essential Digital Marketing Strategies</h4>
+                                        <span>June 10, 2023</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <div class="popular-post">
+                                    <img src="images/blog-thumb2.jpg" alt="Popular Post">
+                                    <div class="popular-post-content">
+                                        <h4>UI/UX Design Principles</h4>
+                                        <span>June 5, 2023</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </aside>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="section newsletter-section">
+        <div class="container">
+            <div class="newsletter-container">
+                <div class="newsletter-content">
+                    <h3>Subscribe to Our Newsletter</h3>
+                    <p>Get the latest updates and news directly to your inbox</p>
+                </div>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Your email address" required>
+                    <button type="submit" class="btn">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-widget">
+                    <h3>About Us</h3>
+                    <p>We are a creative team dedicated to building amazing digital experiences for our clients.</p>
+                    <div class="footer-social">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-widget">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html" class="footer-link">Home</a></li>
+                        <li><a href="about.html" class="footer-link">About Us</a></li>
+                        <li><a href="services.html" class="footer-link">Services</a></li>
+                        <li><a href="blog.html" class="footer-link">Blog</a></li>
+                        <li><a href="contact.html" class="footer-link">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-widget">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="#" class="footer-link">Web Design</a></li>
+                        <li><a href="#" class="footer-link">Web Development</a></li>
+                        <li><a href="#" class="footer-link">Digital Marketing</a></li>
+                        <li><a href="#" class="footer-link">SEO Services</a></li>
+                        <li><a href="#" class="footer-link">Graphic Design</a></li>
+                    </ul>
+                </div>
+                <div class="footer-widget">
+                    <h3>Contact Info</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Business Ave, City</li>
+                        <li><i class="fas fa-phone"></i> +1 234 567 890</li>
+                        <li><i class="fas fa-envelope"></i> info@yourcompany.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="copyright">&copy; 2023 Your Company. All Rights Reserved.</p>
+                <div class="footer-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Mobile Menu Toggle
+        document.querySelector('.mobile-menu-toggle').addEventListener('click', function() {
+            document.getElementById('nav-menu').classList.toggle('show');
+        });
+
+        // Header Scroll Effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Temporary blog posts data for testing
+        const samplePosts = [
+            {
+                id: 1,
+                title: "The Future of Web Development",
+                excerpt: "Exploring the latest trends and technologies shaping web development in 2024.",
+                image: "images/blog1.jpg",
+                category: "Technology",
+                categories: ["technology", "web-development"],
+                date: "June 15, 2023",
+                author: "John Doe",
+                slug: "future-of-web-development",
+                tags: ["javascript", "react", "css"]
+            },
+            {
+                id: 2,
+                title: "UI/UX Design Best Practices",
+                excerpt: "Learn the essential principles of effective user interface and experience design.",
+                image: "images/blog2.jpg",
+                category: "Design",
+                categories: ["design", "ui-ux"],
+                date: "June 12, 2023",
+                author: "Jane Smith",
+                slug: "ui-ux-design-best-practices",
+                tags: ["design", "ux", "ui"]
+            },
+            {
+                id: 3,
+                title: "Digital Marketing Strategies",
+                excerpt: "Effective digital marketing strategies to grow your business online.",
+                image: "images/blog3.jpg",
+                category: "Marketing",
+                categories: ["marketing", "digital"],
+                date: "June 10, 2023",
+                author: "Mike Johnson",
+                slug: "digital-marketing-strategies",
+                tags: ["marketing", "seo", "social-media"]
+            },
+            {
+                id: 4,
+                title: "JavaScript ES6 Features",
+                excerpt: "A comprehensive guide to the most useful ES6 features every developer should know.",
+                image: "images/blog4.jpg",
+                category: "Development",
+                categories: ["development", "javascript"],
+                date: "June 8, 2023",
+                author: "Sarah Wilson",
+                slug: "javascript-es6-features",
+                tags: ["javascript", "es6", "programming"]
+            }
+        ];
+
+        // Function to render blog posts
+        function renderBlogPosts(posts) {
+            const container = document.getElementById('blog-grid');
+            
+            if (!container) return;
+
+            container.innerHTML = posts.map(post => `
+                <article class="blog-post" 
+                         data-categories="${post.categories?.join(',') || ''}"
+                         data-searchable="${post.title.toLowerCase()} ${post.excerpt.toLowerCase()}">
+                    <div class="blog-post-image">
+                        <span class="blog-category">${post.category}</span>
+                        <img src="${post.image}" alt="${post.title}" loading="lazy">
+                    </div>
+                    <div class="blog-post-content">
+                        <div class="blog-post-meta">
+                            <span><i class="far fa-calendar"></i> ${post.date}</span>
+                            <span><i class="far fa-user"></i> ${post.author}</span>
+                        </div>
+                        <h3><a href="/blog/${post.slug}">${post.title}</a></h3>
+                        <p class="blog-post-excerpt">${post.excerpt}</p>
+                        ${post.tags?.length ? `<div class="post-tags">${post.tags.map(tag => `<a href="/blog/tag/${tag}" class="tag">#${tag}</a>`).join('')}</div>` : ''}
+                        <a href="/blog/${post.slug}" class="read-more-btn">Read More</a>
+                    </div>
+                </article>
+            `).join('');
+
+            // Show pagination after posts load
+            document.querySelector('.blog-pagination').style.display = 'flex';
+        }
+
+        // Function to initialize blog features
+        function initBlogFeatures() {
+            // Category filtering
+            document.querySelectorAll('[data-filter]').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    filterPosts(btn.dataset.filter);
+                    setActiveFilter(btn);
+                });
+            });
+
+            // Search functionality
+            const searchInput = document.querySelector('.blog-search input');
+            if (searchInput) {
+                searchInput.addEventListener('input', (e) => {
+                    searchPosts(e.target.value.toLowerCase());
+                });
+            }
+        }
+
+        function filterPosts(category) {
+            document.querySelectorAll('.blog-post').forEach(post => {
+                const matches = category === 'all' || 
+                               post.dataset.categories.includes(category);
+                post.style.display = matches ? 'block' : 'none';
+            });
+        }
+
+        function searchPosts(term) {
+            document.querySelectorAll('.blog-post').forEach(post => {
+                const matches = term === '' || 
+                               post.dataset.searchable.includes(term);
+                post.style.display = matches ? 'block' : 'none';
+            });
+        }
+
+        function setActiveFilter(activeBtn) {
+            document.querySelectorAll('[data-filter]').forEach(btn => {
+                btn.classList.toggle('active', btn === activeBtn);
+            });
+        }
+
+        // Initialize everything when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load blog posts (using sample data for now)
+            setTimeout(() => {
+                renderBlogPosts(samplePosts);
+                initBlogFeatures();
+            }, 1000); // Simulate loading delay
+
+            // Try to load from actual API (this will fail gracefully)
+            fetch('/data/blog/posts.json')
+                .then(response => response.json())
+                .then(posts => {
+                    renderBlogPosts(posts);
+                    initBlogFeatures();
+                })
+                .catch(error => {
+                    console.log('Using sample data since API is not available');
+                    // Sample data is already loaded above
+                });
+        });
+    </script>
+    
+    <!-- FIXED: Correct script tag -->
+    <script src="js/blog.js"></script>
+</body>
+</html>

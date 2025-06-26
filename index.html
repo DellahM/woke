@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Woke - Premium Developer Web Services in Kenya</title>
     <link rel="stylesheet" href="css/styles.css">
-    <!-- Netlify Identity Widget -->
-    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    <link rel="stylesheet" href="css/styles.css">
+     <link rel="stylesheet" href="css/blog-slider.css">  
     <!-- Add meta description for SEO -->
     <meta name="description" content="WOKE delivers cutting-edge developer services, empowering businesses through technology and innovation. Based in Kenya, serving clients worldwide.">
 </head>
@@ -15,20 +15,22 @@
     <header id="header">
         <div class="container header-container">
            <a href="#" class="logo">
-              <img src="images/woke-logo.png" alt="WokeBusiness Tech" class="logo-img" width="200" height="60" loading="lazy">
+              <img src="images/wokebusiness logo.ico" alt="WokeBusiness Tech" class="logo-img" width="200" height="60" loading="lazy">
               <span class="logo-text">WOKE TECH<span>.</span></span>
            </a>
             <div class="mobile-menu-toggle" aria-label="Mobile menu toggle">&#9776;</div>
             <nav aria-label="Main navigation">
                 <ul id="nav-menu">
                     <li><a href="#hero">Home</a></li>
-                    <li><a href="#about">About</a></li>
+                     <li><a href="blog.html">Blog</a></li>
+                     <li><a href="projects.html">Projects</a></li>
+                   <!--<li><a href="#about">About</a></li>
                     <li><a href="#services">Services</a></li>
-                    <li><a href="#portfolio">Portfolio</a></li>
-                    <li><a href="#team">Our Team</a></li>
+                   
+                    <li><a href="#team">Our Team</a></li>-->
                     <li><a href="#contact">Contact</a></li>
-                    <li><a href="projects.html">Projects</a></li>
-                    <li id="admin-nav-item" style="display:none;"><a href="/admin/">CMS</a></li>
+                    
+                   <!---<li id="admin-nav-item" style="display:none;"><a href="/admin/">CMS</a></li>-->
                 </ul>
             </nav>
         </div>
@@ -916,57 +918,35 @@
 </section>
 
 
-   <!-- Blog Section - Modified for CMS -->
+<!-- Blog Section -->
 <section id="blog" class="section">
     <div class="container">
         <div class="section-header">
             <h2 class="section-title">Latest News</h2>
-            <p class="section-subtitle">Stay updated with our latest articles and industry insights</p>
+            <p class="section-subtitle">Stay updated with our latest articles</p>
         </div>
         
-        <!-- CMS-Powered Blog Posts Container -->
-        <div class="portfolio-grid" id="blog-posts-container">
-            <!-- Fallback Content (will be replaced if JavaScript works) -->
-            <div class="portfolio-item">
-                <img src="/images/placeholder-blog1.jpg" alt="Web Development Trends" 
-                     class="portfolio-img" width="400" height="300" loading="lazy">
-                <div class="portfolio-overlay">
-                    <p class="portfolio-category">Technology</p>
-                    <h3 class="portfolio-title">The Rise of AI in Web Development</h3>
-                    <a href="/blog/ai-web-development" class="btn btn-outline">Read More</a>
-                </div>
+        <!-- Blog Slider Container -->
+        <div class="blog-slider">
+            <button class="blog-slider-arrow blog-slider-prev">&#10094;</button>
+            <button class="blog-slider-arrow blog-slider-next">&#10095;</button>
+            
+            <div class="blog-slider-container" id="blog-slider-container">
+                <!-- Slides will be inserted here by JavaScript -->
+                <div class="loading-spinner"></div>
             </div>
             
-           <div class="portfolio-item">
-                    <img src="/api/placeholder/400/300" alt="Blog Post" class="portfolio-img">
-                    <div class="portfolio-overlay">
-                        <p class="portfolio-category">Business</p>
-                        <h3 class="portfolio-title">Digital Transformation in Kenya</h3>
-                        <a href="#" class="btn btn-outline">Read More</a>
-                    </div>
-                </div>
-            
-            
-             <div class="portfolio-item">
-                    <img src="/api/placeholder/400/300" alt="Blog Post" class="portfolio-img">
-                    <div class="portfolio-overlay">
-                        <p class="portfolio-category">Design</p>
-                        <h3 class="portfolio-title">UX Trends for 2025</h3>
-                        <a href="#" class="btn btn-outline">Read More</a>
-                    </div>
-                </div>
+            <div class="blog-slider-nav">
+                <div class="blog-slider-dots"></div>
             </div>
-        </div>
-            
-            <!-- Additional fallback items as needed -->
         </div>
         
-        <!-- CMS Admin Button (visible only when logged in) -->
-        <div id="cms-admin" style="text-align: center; margin-top: 2rem; display: none;">
-            <a href="/admin/" class="btn">Add New Post</a>
+        <div class="text-center" style="margin-top: 2rem;">
+            <a href="/blog/" class="btn">View All Blog Posts</a>
         </div>
     </div>
 </section>
+
 
 
 
@@ -1084,33 +1064,10 @@
 
     <!-- JavaScript -->
     <script src="script.js"></script>
+        <script src="js/blog.js"></script>
+   
 
-<script>
-// Load blog posts from CMS
-fetch('/blog/index.json')
-    .then(response => response.json())
-    .then(posts => {
-        const container = document.getElementById('blog-posts-container');
-        if (posts && posts.length > 0) {
-            container.innerHTML = ''; // Clear fallback content
-            posts.forEach(post => {
-                container.innerHTML += `
-                    <div class="portfolio-item">
-                        <img src="${post.image}" alt="${post.title}" 
-                             class="portfolio-img" width="400" height="300" loading="lazy">
-                        <div class="portfolio-overlay">
-                            <p class="portfolio-category">${post.category}</p>
-                            <h3 class="portfolio-title">${post.title}</h3>
-                            <a href="/blog/${post.slug}" class="btn btn-outline">Read More</a>
-                        </div>
-                    </div>
-                `;
-            });
-        }
-    })
-    .catch(error => {
-        console.log('Using fallback blog content:', error);
-    });
+
 </script>
 
 

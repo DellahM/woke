@@ -1,0 +1,15 @@
+{
+  "id": "post2",
+  "title": "UI/UX Design Best Practices", 
+  "excerpt": "Learn the essential principles of effective user interface and experience design.",
+  "content": "<p>Great UI/UX design is the foundation of successful digital products...</p><p>Key principles include:</p><ul><li>User-centered design</li><li>Consistency and patterns</li><li>Accessibility</li><li>Performance optimization</li></ul>",
+  "image": "images/blog2.jpg",
+  "category": "Design",
+  "categories": ["design", "ui-ux"],
+  "date": "2023-06-12",
+  "author": "Jane Smith",
+  "slug": "ui-ux-design-best-practices",
+  "tags": ["design", "ux", "ui"],
+  "readTime": "7 min read",
+  "featured": false
+}

@@ -1,9 +1,10 @@
-/* Projects Page Specific Styles */
+/* Projects Page Specific Styles - Navy Blue Theme */
 .projects-section {
     padding-bottom: 60px;
     margin-bottom: 80px; /* Increased margin to create more space */
     position: relative; /* Ensure proper stacking */
     z-index: 1;
+    background-color: #150734; /* Deep navy background */
 }
 
 .projects-container {
@@ -12,7 +13,7 @@
     padding-right: 10px;
     margin-bottom: 40px;
     scrollbar-width: thin;
-    scrollbar-color: #e21a88 #121212;
+    scrollbar-color: #3778c2 #150734; /* Bright blue thumb on navy track */
 }
 
 .projects-container::-webkit-scrollbar {
@@ -20,12 +21,12 @@
 }
 
 .projects-container::-webkit-scrollbar-track {
-    background: #fff6f6;
+    background: #150734; /* Deep navy track */
     border-radius: 10px;
 }
 
 .projects-container::-webkit-scrollbar-thumb {
-    background-color: hsl(300, 5%, 4%);
+    background-color: #3778c2; /* Bright blue thumb */
     border-radius: 10px;
 }
 
@@ -36,15 +37,17 @@
 }
 
 .project-card {
-    background-color: #cdd4d4;
+    background-color: #0f2557; /* Navy blue card background */
     border-radius: 8px;
     overflow: hidden;
     transition: all 0.3s ease;
+    border: 1px solid #28559a; /* Medium blue border */
 }
 
 .project-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 15px 30px rgba(55, 120, 194, 0.3); /* Blue shadow */
+    border-color: #3778c2; /* Bright blue border on hover */
 }
 
 .project-image {
@@ -68,8 +71,8 @@
     position: absolute;
     top: 20px;
     right: 20px;
-    background-color: #c94b7b;
-    color: #f7f5f5;
+    background-color: #28559a; /* Medium blue tag */
+    color: #ffffff;
     padding: 6px 12px;
     border-radius: 30px;
     font-size: 14px;
@@ -84,11 +87,12 @@
     font-size: 24px;
     font-weight: 700;
     margin-bottom: 15px;
+    color: #ffffff; /* White text for contrast */
 }
 
 .project-desc {
     margin-bottom: 20px;
-    color: #070004;
+    color: #e0e6ed; /* Light text for description */
     line-height: 1.6;
 }
 
@@ -98,7 +102,7 @@
     align-items: center;
     margin-bottom: 20px;
     font-size: 14px;
-    color: #020024;
+    color: #b8c5d1; /* Lighter text for meta */
 }
 
 .project-client, .project-date {
@@ -109,6 +113,7 @@
 .project-client span, .project-date span {
     margin-right: 8px;
     font-size: 18px;
+    color: #3778c2; /* Bright blue for icons */
 }
 
 .project-links {
@@ -119,6 +124,15 @@
 
 .project-links a {
     padding: 10px 20px;
+    background-color: #3778c2; /* Bright blue background */
+    color: #ffffff;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.project-links a:hover {
+    background-color: #28559a; /* Medium blue on hover */
 }
 
 /* Project details list */
@@ -129,8 +143,8 @@
 }
 
 .project-detail-item {
-    background-color: rgba(242, 242, 243, 0.452);
-    color: #b40841;
+    background-color: #28559a; /* Medium blue background */
+    color: #7ed5ea; /* Light blue text */
     border-radius: 30px;
     padding: 5px 15px;
     margin-right: 10px;
@@ -140,7 +154,7 @@
 
 /* Page title section */
 .page-title-section {
-    background: linear-gradient(rgba(180, 11, 110, 0.8), rgba(230, 146, 146, 0.8)), url('/api/placeholder/1200/300') center/cover no-repeat;
+    background: linear-gradient(rgba(21, 7, 52, 0.8), rgba(15, 37, 87, 0.8)), url('/api/placeholder/1200/300') center/cover no-repeat;
     padding: 140px 0 80px;
     margin-bottom: 0;
     position: relative; /* Added positioning */
@@ -148,10 +162,12 @@
 
 .page-title-section .hero-title {
     margin-bottom: 10px;
+    color: #ffffff; /* White title */
 }
 
 .page-title-section .section-subtitle {
     max-width: 700px;
+    color: #e0e6ed; /* Light text for subtitle */
 }
 
 /* Portfolio filter */
@@ -164,8 +180,8 @@
 
 .filter-btn {
     background: none;
-    border: none;
-    color: #888;
+    border: 1px solid #0f2557; /* Navy blue border for inactive */
+    color: #b8c5d1; /* Light gray text */
     padding: 8px 20px;
     margin: 0 5px 10px;
     cursor: pointer;
@@ -176,17 +192,19 @@
 }
 
 .filter-btn:hover {
-    color: #be2b70;
+    color: #3778c2; /* Bright blue on hover */
+    border-color: #3778c2;
 }
 
 .filter-btn.active {
-    background-color: #bd567e;
-    color: #fff;
+    background-color: #3778c2; /* Bright blue active */
+    color: #ffffff;
+    border-color: #3778c2;
 }
 
 /* Call to Action Section */
 .cta-section {
-    background: linear-gradient(rgba(135, 115, 207, 0.8), rgba(32, 168, 209, 0.8)), url('/api/placeholder/1200/400') center/cover no-repeat;
+    background: linear-gradient(rgba(21, 7, 52, 0.8), rgba(55, 120, 194, 0.8)), url('/api/placeholder/1200/400') center/cover no-repeat;
     text-align: center;
     margin-top: 60px;
     padding: 80px 0;
@@ -197,12 +215,13 @@
 
 .cta-section .section-title {
     margin-bottom: 20px;
+    color: #ffffff; /* White title */
 }
 
 .cta-text {
     max-width: 700px;
     margin: 0 auto 30px;
-    color: #f5f5f5;
+    color: #e0e6ed; /* Light text */
 }
 
 .cta-buttons {
@@ -212,13 +231,26 @@
     flex-wrap: wrap;
 }
 
+.cta-buttons a {
+    background-color: #3778c2; /* Bright blue buttons */
+    color: #ffffff;
+    padding: 12px 24px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.cta-buttons a:hover {
+    background-color: #28559a; /* Medium blue on hover */
+}
+
 /* Footer fix to improve text visibility */
 footer {
     clear: both;
     position: relative;
     margin-top: 40px;
     z-index: 2;
-    background-color: #5f1148; /* Dark background for contrast */
+    background-color: #0f2557; /* Navy blue background */
 }
 
 /* Footer text visibility improvements */
@@ -230,7 +262,7 @@ footer h3 {
 }
 
 footer p, footer .footer-link {
-    color: #dddddd; /* Lighter color for better visibility */
+    color: #b8c5d1; /* Light blue-gray for better visibility */
     line-height: 1.6;
 }
 
@@ -241,7 +273,7 @@ footer p, footer .footer-link {
 }
 
 .footer-link:hover {
-    color: #4caf50; /* Highlight on hover */
+    color: #3778c2; /* Bright blue highlight on hover */
 }
 
 .footer-social a {
@@ -252,12 +284,12 @@ footer p, footer .footer-link {
 }
 
 .footer-social a:hover {
-    color: #4caf50;
+    color: #3778c2; /* Bright blue on hover */
 }
 
 .footer-subscribe input {
     background-color: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid #28559a; /* Medium blue border */
     color: #ffffff;
     padding: 10px 15px;
     margin-bottom: 10px;
@@ -265,7 +297,21 @@ footer p, footer .footer-link {
 }
 
 .footer-subscribe input::placeholder {
-    color: #aaaaaa;
+    color: #b8c5d1; /* Light blue-gray placeholder */
+}
+
+.footer-subscribe button {
+    background-color: #3778c2; /* Bright blue button */
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.footer-subscribe button:hover {
+    background-color: #28559a; /* Medium blue on hover */
 }
 
 .footer-bottom {
@@ -275,19 +321,19 @@ footer p, footer .footer-link {
 }
 
 .copyright {
-    color: #aaaaaa; /* Slightly dimmer but still readable */
+    color: #b8c5d1; /* Light blue-gray but still readable */
     font-size: 14px;
 }
 
 .footer-links a {
-    color: #dddddd;
+    color: #b8c5d1; /* Light blue-gray */
     margin-left: 15px;
     font-size: 14px;
     transition: color 0.3s ease;
 }
 
 .footer-links a:hover {
-    color: #4caf50;
+    color: #3778c2; /* Bright blue on hover */
 }
 
 /* Responsive adjustments */
@@ -325,15 +371,13 @@ footer p, footer .footer-link {
 section {
     position: relative;
     clear: both; /* Clear any floating elements */
+    background-color: #150734; /* Deep navy background for all sections */
 }
 
 /* Fix for cta section and footer gap */
 .cta-section + footer {
     margin-top: 0; /* Remove margin when footer follows cta */
 }
-
-
-
 
 /* Hide text but keep for screen readers */
 .logo-text {
@@ -348,7 +392,34 @@ section {
     border: 0;
 }
 
+/* Error state */
+.error-message {
+    color: #7ed5ea; /* Light blue for error messages */
+    text-align: center;
+    padding: 2rem;
+    font-size: 1.1rem;
+}
 
+/* Tech pills */
+.tech-pill {
+    display: inline-block;
+    background: #28559a; /* Medium blue background */
+    color: #7ed5ea; /* Light blue text */
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+}
 
+/* Smooth transitions */
+.project-card {
+    transition: 
+        opacity 0.3s ease, 
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
 
-
+.project-card img {
+    transition: transform 0.5s ease;
+}

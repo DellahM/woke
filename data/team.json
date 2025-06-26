@@ -1,0 +1,46 @@
+[
+  {
+    "id": "member1",
+    "name": "John Doe",
+    "position": "Lead Developer",
+    "bio": "John is a full-stack developer with 5+ years of experience in web development.",
+    "photo": "images/team/john.jpg",
+    "social": [
+      {"platform": "LinkedIn", "url": "https://linkedin.com/in/johndoe"},
+      {"platform": "Twitter", "url": "https://twitter.com/johndoe"}
+  ]
+},
+{
+  "id": "member2",
+    "name": "Jane Smith",
+    "position": "UI/UX Designer",
+    "bio": "Jane specializes in creating user-friendly interfaces and enhancing user experience.",
+    "photo": "images/team/jane.jpg",
+    "social": [
+      {"platform": "LinkedIn", "url": "https://linkedin.com/in/janesmith"},
+      {"platform": "Twitter", "url": "https://twitter.com/janesmith"}
+    ]
+  },
+  {
+    "id": "member3",
+    "name": "Mike Johnson",
+    "position": "Marketing Specialist",
+    "bio": "Mike has a passion for digital marketing and helping brands grow online.",
+    "photo": "images/team/mike.jpg",
+    "social": [
+      {"platform": "LinkedIn", "url": "https://linkedin.com/in/mikejohnson"},
+      {"platform": "Twitter", "url": "https://twitter.com/mikejohnson"}
+    ]
+  },
+  {
+    "id": "member4",
+    "name": "Sarah Wilson",
+    "position": "Content Writer",
+    "bio": "Sarah creates engaging content that resonates with audiences and drives traffic.",
+    "photo": "images/team/sarah.jpg",
+    "social": [
+      {"platform": "LinkedIn", "url": "https://linkedin.com/in/sarahwilson"},
+      {"platform": "Twitter", "url": "https://twitter.com/sarahwilson"}
+    ]
+  }
+]

@@ -1,0 +1,47 @@
+[
+  {
+    "title": "Beauty Ecommerce Site",
+    "client": "Glamour Cosmetics",
+    "date": "2024-03-15",
+    "image": "images/portfolio/beauty-ecom.jpg",
+    "categories": ["web", "ecommerce"],
+    "technologies": ["HTML", "CSS", "JavaScript"],
+    "description": "Online store for beauty products with cart functionality.",
+    "website": "https://example.com"
+  },
+  {
+    "title": "Mobile Banking App",
+    "client": "Fintech Solutions",
+    "date": "2024-02-10",
+    "image": "images/portfolio/banking-app.jpg",
+    "categories": ["mobile"],
+    "technologies": ["React Native", "Firebase"],
+    "description": "Secure mobile banking application for iOS and Android.",
+    "website": "https://example.com"
+  },
+ {
+    "title": "Banking App",
+    "client": "Fintech Solutions",
+    "date": "2024-02-10",
+    "image": "images/portfolio/banking-app.jpg",
+    "categories": ["web"],
+    "technologies": ["React Native", "Firebase"],
+    "description": "Secure mobile banking application for iOS and Android.",
+    "website": "https://example.com"
+  },
+
+ {
+    "title": "sms App",
+    "client": "Fintech Solutions",
+    "date": "2024-02-10",
+    "image": "images/portfolio/banking-app.jpg",
+    "categories": ["ecommerce"],
+    "technologies": ["React Native", "Firebase"],
+    "description": "Secure mobile banking application for iOS and Android.",
+    "website": "https://example.com"
+  }
+
+
+
+]
+

@@ -6,77 +6,75 @@
     <title>Our Projects - WOKE Tech</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/projects.css">
-    <!-- Add Netlify CMS script -->
-    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
 
 <body>
-    <!-- Admin Link (visible when logged in) -->
-    <div id="admin-link" style="display: none; background: #f0f0f0; padding: 10px; text-align: center;">
-        <a href="/admin/" class="btn">Admin Dashboard</a>
-    </div>
-
     <!-- Header Section -->
     <header id="header">
         <div class="container header-container">
-            <img src="images/woke-logo.png" alt="WokeBusiness Tech" class="logo-img">
-            <span class="logo-text">WOKE TECH<span>.</span></span>
-            <div class="mobile-menu-toggle">&#9776;</div>
-            <nav>
+            <a href="index.html" class="logo">
+                <img src="images/woke-logo.png" alt="WokeBusiness Tech" class="logo-img">
+                <span class="logo-text">WOKE TECH<span>.</span></span>
+            </a>
+            <div class="mobile-menu-toggle" aria-label="Mobile menu">&#9776;</div>
+            <nav aria-label="Main navigation">
                 <ul id="nav-menu">
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="index.html#about">About</a></li>
-                    <li><a href="index.html#services">Services</a></li>
-                    <li><a href="#" class="active">Projects</a></li>
-                    <li><a href="index.html#team">Our Team</a></li>
+                  <!-- <li><a href="index.html#about">About</a></li>
+                    <li><a href="index.html#services">Services</a></li>-->
+                    <li><a href="projects.html" class="active">Projects</a></li>
                     <li><a href="index.html#contact">Contact</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <!-- Page Title Section -->
-    <section class="section page-title-section">
-        <div class="container">
-            <h1 class="hero-title">Our Projects</h1>
-            <p class="section-subtitle">Explore our portfolio of successful projects delivered for clients across various industries. Each project showcases our technical expertise and commitment to excellence.</p>
-        </div>
-    </section>
+    <!-- Main Content -->
+    <main>
+        <!-- Page Title Section -->
+        <section class="section page-title-section">
+            <div class="container">
+                <h1 class="hero-title">Our Projects</h1>
+                <p class="section-subtitle">Explore our portfolio of successful projects delivered for clients across various industries.</p>
+            </div>
+        </section>
 
-    <!-- Projects Section -->
-    <section class="section projects-section">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Featured Projects</h2>
-                <p class="section-subtitle">Browse through our collection of work that demonstrates our capabilities and expertise in delivering exceptional web solutions.</p>
-            </div>
-            
-            <div class="portfolio-filter">
-                <button class="filter-btn active" data-filter="all">All</button>
-                <button class="filter-btn" data-filter="web">Web</button>
-                <button class="filter-btn" data-filter="mobile">Mobile</button>
-                <button class="filter-btn" data-filter="ecommerce">E-Commerce</button>
-                <button class="filter-btn" data-filter="saas">SaaS</button>
-            </div>
+        <!-- Projects Section -->
+        <section class="section projects-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Featured Work</h2>
+                    <p class="section-subtitle">Browse our collection showcasing technical expertise and innovation.</p>
+                </div>
+                
+                <!-- Filter Buttons -->
+                <div class="portfolio-filter" role="group" aria-label="Project filters">
+                    <button class="filter-btn active" data-filter="all" aria-pressed="true">All</button>
+                    <button class="filter-btn" data-filter="web">Web</button>
+                    <button class="filter-btn" data-filter="mobile">Mobile</button>
+                    <button class="filter-btn" data-filter="ecommerce">E-Commerce</button>
+                </div>
 
-            <!-- Projects will be dynamically loaded here from Netlify CMS -->
-            <div class="project-grid projects-container" id="projects-container">
-                <!-- Projects will be inserted here by JavaScript -->
+                <!-- Projects Container -->
+                <div class="project-grid" id="projects-container" aria-live="polite">
+                    <!-- Projects will load here dynamically -->
+                    <div class="loading-spinner"></div>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Call to Action Section -->
-    <section class="section cta-section">
-        <div class="container">
-            <h2 class="section-title">Ready to Start Your Project?</h2>
-            <p class="cta-text">Let's discuss how we can help transform your business with innovative web solutions tailored to your specific needs.</p>
-            <div class="cta-buttons">
-                <a href="index.html#contact" class="btn">Contact Us Today</a>
-                <a href="index.html#services" class="btn btn-outline">Explore Services</a>
+        <!-- Call to Action -->
+        <section class="section cta-section">
+            <div class="container">
+                <h2 class="section-title">Ready to Start Your Project?</h2>
+                <p class="cta-text">Let's discuss how we can help transform your business with innovative solutions.</p>
+                <div class="cta-buttons">
+                    <a href="index.html#contact" class="btn">Contact Us</a>
+                    <a href="index.html#services" class="btn btn-outline">Our Services</a>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
     <!-- Footer Section -->
     <footer>
@@ -84,110 +82,40 @@
             <div class="footer-top">
                 <div class="footer-widget">
                     <h3>About WOKE</h3>
-                    <p>WOKE is a premier web development and software service company based in Nairobi, Kenya. We deliver innovative digital solutions for businesses across East Africa and beyond.</p>
+                    <p>Premier web development company based in Nairobi, Kenya delivering innovative digital solutions.</p>
                     <div class="footer-social">
-                        <a href="#"><span>f</span></a>
-                        <a href="#"><span>tw</span></a>
-                        <a href="#"><span>in</span></a>
-                        <a href="#"><span>ig</span></a>
+                        <a href="#" aria-label="Facebook"><span>f</span></a>
+                        <a href="#" aria-label="Twitter"><span>tw</span></a>
+                        <a href="#" aria-label="LinkedIn"><span>in</span></a>
                     </div>
                 </div>
                 <div class="footer-widget">
-                    <h3>Our Services</h3>
-                    <a href="index.html#services" class="footer-link">Web Development</a>
-                    <a href="index.html#services" class="footer-link">Mobile App Development</a>
-                    <a href="index.html#services" class="footer-link">E-Commerce Solutions</a>
-                    <a href="index.html#services" class="footer-link">API Development</a>
-                    <a href="index.html#services" class="footer-link">UI/UX Design</a>
-                </div>
-                <div class="footer-widget">
                     <h3>Quick Links</h3>
-                    <a href="index.html#about" class="footer-link">About Us</a>
+                    <a href="index.html" class="footer-link">Home</a>
+                    <a href="projects.html" class="footer-link">Projects</a>
                     <a href="index.html#services" class="footer-link">Services</a>
-                    <a href="#" class="footer-link">Projects</a>
-                    <a href="index.html#team" class="footer-link">Team</a>
-                    <a href="index.html#pricing" class="footer-link">Pricing</a>
-                    <a href="index.html#blog" class="footer-link">Blog</a>
                     <a href="index.html#contact" class="footer-link">Contact</a>
                 </div>
                 <div class="footer-widget">
                     <h3>Newsletter</h3>
-                    <p>Subscribe to our newsletter to receive the latest updates and news.</p>
                     <form class="footer-subscribe">
-                        <input type="email" class="form-control" placeholder="Your Email">
+                        <input type="email" placeholder="Your Email" required>
                         <button type="submit" class="btn">Subscribe</button>
                     </form>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p class="copyright">© 2025 WOKE. All Rights Reserved. | www.wokesiness.org</p>
+                <p class="copyright">© 2025 WOKE. All Rights Reserved.</p>
                 <div class="footer-links">
-                    <a href="#">Privacy Policy</a>
-                    <a href="#">Terms of Service</a>
-                    <a href="#">Sitemap</a>
+                    <a href="#">Privacy</a>
+                    <a href="#">Terms</a>
                 </div>
             </div>
         </div>
     </footer>
 
     <!-- JavaScript -->
-    <script src="script.js"></script>
-    <script>
-        // Netlify Identity Widget
-        if (window.netlifyIdentity) {
-            window.netlifyIdentity.on("init", user => {
-                if (!user) {
-                    window.netlifyIdentity.on("login", () => {
-                        document.getElementById("admin-link").style.display = "block";
-                        window.location.href = "/admin/";
-                    });
-                } else {
-                    document.getElementById("admin-link").style.display = "block";
-                }
-            });
-        }
-
-        // Fetch projects from Netlify CMS
-        document.addEventListener('DOMContentLoaded', function() {
-            fetch('/projects.json')
-                .then(response => response.json())
-                .then(data => {
-                    const container = document.getElementById('projects-container');
-                    
-                    data.forEach(project => {
-                        const projectCard = `
-                            <div class="project-card" data-category="${project.categories.join(' ')}">
-                                <div class="project-image">
-                                    <img src="${project.image}" alt="${project.title}">
-                                    <div class="project-tag">${project.categories[0]}</div>
-                                </div>
-                                <div class="project-content">
-                                    <h3 class="project-title">${project.title}</h3>
-                                    <div class="project-meta">
-                                        <div class="project-client">
-                                            <span>👤</span> ${project.client}
-                                        </div>
-                                        <div class="project-date">
-                                            <span>📅</span> ${project.date}
-                                        </div>
-                                    </div>
-                                    <p class="project-desc">${project.description}</p>
-                                    <div class="project-details">
-                                        ${project.technologies.map(tech => `<span class="project-detail-item">${tech}</span>`).join('')}
-                                    </div>
-                                    <div class="project-links">
-                                        <a href="${project.website}" target="_blank" class="btn">Visit Website</a>
-                                        ${project.case_study ? `<a href="${project.case_study}" class="btn btn-outline">Case Study</a>` : ''}
-                                    </div>
-                                </div>
-                            </div>
-                        `;
-                        container.insertAdjacentHTML('beforeend', projectCard);
-                    });
-                })
-                .catch(error => console.error('Error loading projects:', error));
-        });
-    </script>
-    <script src="projects.js"></script>
+    <script src="js/projects.js" defer></script>
+    <script src="js/script.js" defer></script>
 </body>
 </html>

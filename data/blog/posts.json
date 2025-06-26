@@ -1,0 +1,54 @@
+[
+  {
+    "id": "post1",
+    "title": "The Future of Web Development",
+    "excerpt": "Exploring the latest trends and technologies shaping web development in 2024.",
+    "image": "images/blog1.jpg",
+    "category": "Technology",
+    "categories": ["technology", "web-development"],
+    "date": "2023-06-15",
+    "author": "John Doe",
+    "slug": "future-of-web-development",
+    "tags": ["javascript", "react", "css"],
+    "readTime": "5 min read"
+  },
+  {
+    "id": "post2", 
+    "title": "UI/UX Design Best Practices",
+    "excerpt": "Learn the essential principles of effective user interface and experience design.",
+    "image": "images/blog2.jpg",
+    "category": "Design",
+    "categories": ["design", "ui-ux"],
+    "date": "2023-06-12",
+    "author": "Jane Smith", 
+    "slug": "ui-ux-design-best-practices",
+    "tags": ["design", "ux", "ui"],
+    "readTime": "7 min read"
+  },
+  {
+    "id": "post3",
+    "title": "Digital Marketing Strategies",
+    "excerpt": "Effective digital marketing strategies to grow your business online.",
+    "image": "images/blog3.jpg",
+    "category": "Marketing",
+    "categories": ["marketing", "digital"],
+    "date": "2023-06-10",
+    "author": "Mike Johnson",
+    "slug": "digital-marketing-strategies", 
+    "tags": ["marketing", "seo", "social-media"],
+    "readTime": "6 min read"
+  },
+  {
+    "id": "post4",
+    "title": "JavaScript ES6 Features",
+    "excerpt": "A comprehensive guide to the most useful ES6 features every developer should know.",
+    "image": "images/blog4.jpg",
+    "category": "Development",
+    "categories": ["development", "javascript"],
+    "date": "2023-06-08",
+    "author": "Sarah Wilson",
+    "slug": "javascript-es6-features",
+    "tags": ["javascript", "es6", "programming"],
+    "readTime": "8 min read"
+  }
+]

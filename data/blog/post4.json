@@ -1,0 +1,15 @@
+{
+  "id": "post4",
+  "title": "JavaScript ES6 Features",
+  "excerpt": "A comprehensive guide to the most useful ES6 features every developer should know.",
+  "content": "<p>ES6 introduced many powerful features that make JavaScript development more efficient...</p><p>Key features include:</p><ul><li>Arrow functions</li><li>Template literals</li><li>Destructuring</li><li>Modules</li></ul>",
+  "image": "images/blog4.jpg",
+  "category": "Development", 
+  "categories": ["development", "javascript"],
+  "date": "2023-06-08",
+  "author": "Sarah Wilson",
+  "slug": "javascript-es6-features",
+  "tags": ["javascript", "es6", "programming"],
+  "readTime": "8 min read",
+  "featured": false
+}

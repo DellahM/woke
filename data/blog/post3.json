@@ -1,0 +1,15 @@
+{
+  "id": "post3",
+  "title": "Digital Marketing Strategies",
+  "excerpt": "Effective digital marketing strategies to grow your business online.",
+  "content": "<p>Digital marketing is essential for business growth in today's connected world...</p><p>Essential strategies include:</p><ul><li>Content marketing</li><li>Social media engagement</li><li>SEO optimization</li><li>Email marketing</li></ul>",
+  "image": "images/blog3.jpg",
+  "category": "Marketing",
+  "categories": ["marketing", "digital"],
+  "date": "2023-06-10",
+  "author": "Mike Johnson",
+  "slug": "digital-marketing-strategies",
+  "tags": ["marketing", "seo", "social-media"],
+  "readTime": "6 min read",
+  "featured": false
+}
