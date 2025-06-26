@@ -1,54 +1,36 @@
 // ==================== MOBILE MENU & NAVIGATION ==================== //
+function initMobileMenu() {
+  const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+  const navMenu = document.getElementById('nav-menu');
+  
+  if (mobileMenuToggle && navMenu) {
+    // Ensure menu is closed on page load
+    navMenu.classList.remove('show');
+    
+    mobileMenuToggle.addEventListener('click', function() {
+      navMenu.classList.toggle('show');
+      
+      // Optional: Toggle aria-expanded for accessibility
+      const isExpanded = navMenu.classList.contains('show');
+      this.setAttribute('aria-expanded', isExpanded);
+    });
+    
+    // Close menu when clicking links
+    document.querySelectorAll('#nav-menu a').forEach(link => {
+      link.addEventListener('click', () => {
+        navMenu.classList.remove('show');
+        mobileMenuToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
+}
 
+// Call this early in your initialization
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('🚀 DOM Content Loaded - Starting initialization...');
-    initializeApp();
+  initMobileMenu();
+  // Your other initialization code...
 });
 
-function initializeApp() {
-    console.log('📱 Initializing app components...');
-    initMobileMenu();
-    initScrollEffects();
-    initPortfolioFiltering();
-    initContactForm();
-    initSmoothScrolling();
-    
-    // Debug: Check if blog elements exist
-    const blogSection = document.getElementById('blog');
-    const blogSliderContainer = document.getElementById('blog-slider-container');
-    
-    console.log('🔍 Blog section found:', !!blogSection);
-    console.log('🔍 Blog slider container found:', !!blogSliderContainer);
-    
-    if (blogSliderContainer) {
-        console.log('📝 Loading blog posts...');
-        loadBlogPosts();
-    } else {
-        console.error('❌ Blog slider container not found in DOM');
-    }
-    
-    loadProjects();
-    loadTeam();
-}
-
-// Mobile Menu Toggle
-function initMobileMenu() {
-    const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
-    const navMenu = document.getElementById('nav-menu');
-    
-    if (mobileMenuToggle && navMenu) {
-        mobileMenuToggle.addEventListener('click', function() {
-            navMenu.classList.toggle('show');
-        });
-
-        // Close menu when clicking a link
-        document.querySelectorAll('#nav-menu a, nav ul li a').forEach(link => {
-            link.addEventListener('click', () => {
-                navMenu.classList.remove('show');
-            });
-        });
-    }
-}
 
 // ==================== HEADER SCROLL EFFECT ==================== //
 
@@ -131,288 +113,56 @@ function initSmoothScrolling() {
     });
 }
 
-// ==================== BLOG FUNCTIONALITY ==================== //
+
+
+// Simple blog loader - will work even if JavaScript fails
+document.addEventListener('DOMContentLoaded', function() {
+  // First check if we have hardcoded posts already
+  const blogGrid = document.getElementById('blog-grid');
+  if (!blogGrid || blogGrid.children.length > 0) return;
+
+  // If no hardcoded posts, try to load from JSON
+  loadBlogPosts();
+});
 
 async function loadBlogPosts() {
-    console.log('📰 Starting loadBlogPosts function...');
-    
-    const blogSliderContainer = document.getElementById('blog-slider-container');
-    if (!blogSliderContainer) {
-        console.error('❌ Blog slider container not found');
-        return;
-    }
-
-    try {
-        // Show loading state
-        console.log('⏳ Showing loading state...');
-        showBlogLoading();
-        
-        // Try to load posts.json first (single file approach)
-        console.log('📄 Trying to load from posts.json...');
-        let posts = await loadPostsFromSingleFile();
-        
-        // If that fails, try the index + individual files approach
-        if (!posts || posts.length === 0) {
-            console.log('📋 Trying to load from index + individual files...');
-            posts = await loadPostsFromIndex();
-        }
-        
-        console.log('✅ Final posts loaded:', posts);
-        
-        // If we have posts, initialize the slider
-        if (posts && posts.length > 0) {
-            console.log('🎠 Initializing blog slider with', posts.length, 'posts...');
-            initBlogSlider(posts);
-        } else {
-            console.warn('⚠️ No posts found, showing error...');
-            showBlogError('No blog posts found');
-        }
-        
-    } catch (error) {
-        console.error('💥 Error loading blog posts:', error);
-        showBlogError('Failed to load blog posts: ' + error.message);
-    }
+  try {
+    const response = await fetch('/data/blog/posts.json');
+    const posts = await response.json();
+    displayBlogPosts(posts.slice(0, 2)); // Show only 2 latest
+  } catch (error) {
+    console.log('Using hardcoded posts instead');
+    // The hardcoded HTML will remain visible
+  }
 }
 
-async function loadPostsFromSingleFile() {
-    try {
-        console.log('🔍 Fetching /data/blog/posts.json...');
-        const response = await fetch('/data/blog/posts.json');
-        console.log('📡 Response status:', response.status, response.statusText);
-        
-        if (response.ok) {
-            const posts = await response.json();
-            console.log('📊 Raw posts data:', posts);
-            
-            // Check if it's an array or single object
-            if (Array.isArray(posts)) {
-                console.log('✅ Posts is an array with', posts.length, 'items');
-                return posts;
-            } else {
-                console.log('🔧 Posts is a single object, converting to array...');
-                return [posts]; // Convert single object to array
-            }
-        } else {
-            console.log('❌ Failed to load posts.json:', response.status);
-            return null;
-        }
-    } catch (error) {
-        console.warn('⚠️ Failed to load from posts.json:', error);
-        return null;
-    }
+function displayBlogPosts(posts) {
+  const blogGrid = document.getElementById('blog-grid');
+  if (!blogGrid) return;
+
+  blogGrid.innerHTML = posts.map(post => `
+    <div class="blog-card">
+      <div class="blog-card-image">
+        <img src="${post.image || 'images/placeholder-blog.jpg'}" 
+             alt="${post.title}" 
+             loading="lazy"
+             onerror="this.src='images/placeholder-blog.jpg'">
+      </div>
+      <div class="blog-card-content">
+        <span class="blog-category">${post.category || 'General'}</span>
+        <h3 class="blog-title">${post.title}</h3>
+        <p class="blog-excerpt">${post.excerpt}</p>
+        <a href="/blog/${post.slug}" class="read-more">Read More →</a>
+      </div>
+    </div>
+  `).join('');
 }
 
-async function loadPostsFromIndex() {
-    try {
-        console.log('🔍 Fetching /data/blog/index.json...');
-        // Load the index file
-        const indexResponse = await fetch('/data/blog/index.json');
-        console.log('📡 Index response status:', indexResponse.status);
-        
-        if (!indexResponse.ok) throw new Error('Failed to load index');
-        
-        const index = await indexResponse.json();
-        console.log('📋 Loaded index:', index);
-        
-        // Load individual post files - try both naming conventions
-        const posts = await Promise.all(
-            index.posts.map(async (postId) => {
-                try {
-                    console.log(`🔍 Loading post: ${postId}...`);
-                    
-                    // First try postId.json (e.g., post1.json)
-                    let postResponse = await fetch(`/data/blog/${postId}.json`);
-                    console.log(`📡 ${postId}.json response:`, postResponse.status);
-                    
-                    // If that fails, try postsId.json (e.g., posts1.json) - your current naming
-                    if (!postResponse.ok) {
-                        const alternativeId = postId.replace('post', 'posts');
-                        console.log(`🔄 Trying alternative: ${alternativeId}.json...`);
-                        postResponse = await fetch(`/data/blog/${alternativeId}.json`);
-                        console.log(`📡 ${alternativeId}.json response:`, postResponse.status);
-                    }
-                    
-                    if (postResponse.ok) {
-                        const post = await postResponse.json();
-                        console.log(`✅ Loaded post: ${postId}`, post);
-                        return post;
-                    } else {
-                        console.warn(`❌ Failed to load post: ${postId}`);
-                        return null;
-                    }
-                } catch (error) {
-                    console.warn(`💥 Error loading post: ${postId}`, error);
-                    return null;
-                }
-            })
-        );
-        
-        // Filter out failed loads
-        const validPosts = posts.filter(post => post !== null);
-        console.log('✅ Valid posts loaded:', validPosts.length, validPosts);
-        return validPosts;
-        
-    } catch (error) {
-        console.error('💥 Error loading posts from index:', error);
-        return [];
-    }
-}
 
-function showBlogLoading() {
-    const container = document.getElementById('blog-slider-container');
-    if (container) {
-        console.log('⏳ Displaying loading spinner...');
-        container.innerHTML = '<div class="loading-spinner">Loading blog posts...</div>';
-    }
-}
 
-function showBlogError(message) {
-    const container = document.getElementById('blog-slider-container');
-    if (container) {
-        console.log('❌ Displaying error message:', message);
-        container.innerHTML = `
-            <div class="blog-error" style="text-align: center; padding: 2rem; color: #666;">
-                <p style="margin-bottom: 1rem;">⚠️ ${message}</p>
-                <button onclick="loadBlogPosts()" class="btn btn-outline" style="padding: 0.5rem 1rem; border: 1px solid #ccc; background: white; cursor: pointer;">Try Again</button>
-            </div>
-        `;
-    }
-}
 
-// Blog Slider Functionality
-function initBlogSlider(posts) {
-    console.log('🎠 Initializing blog slider with posts:', posts);
-    
-    const slider = document.querySelector('.blog-slider');
-    const container = document.getElementById('blog-slider-container');
-    const dotsContainer = document.querySelector('.blog-slider-dots');
-    
-    console.log('🔍 Slider elements found:');
-    console.log('  - slider:', !!slider);
-    console.log('  - container:', !!container);
-    console.log('  - dotsContainer:', !!dotsContainer);
-    
-    if (!slider || !container || !posts.length) {
-        const errorMsg = 'Unable to initialize blog slider';
-        console.error('❌', errorMsg);
-        showBlogError(errorMsg);
-        return;
-    }
-    
-    let currentIndex = 0;
-    const slideCount = Math.min(posts.length, 3); // Show max 3 slides
-    
-    console.log('🎯 Creating', slideCount, 'slides...');
-    
-    // Clear existing content
-    container.innerHTML = '';
-    if (dotsContainer) dotsContainer.innerHTML = '';
-    
-    // Create slides
-    posts.slice(0, 3).forEach((post, index) => {
-        console.log(`🎨 Creating slide ${index + 1} for post:`, post.title);
-        
-        const slideDiv = document.createElement('div');
-        slideDiv.className = 'blog-slide';
-        slideDiv.innerHTML = `
-            <div class="portfolio-item">
-                <img src="${post.image || 'images/placeholder-blog.jpg'}" 
-                     alt="${post.title || 'Blog Post'}" 
-                     class="portfolio-img" 
-                     loading="lazy"
-                     onerror="this.src='images/placeholder-blog.jpg'; console.log('Image failed to load:', this.src);">
-                <div class="portfolio-overlay">
-                    <p class="portfolio-category">${post.category || 'Blog'}</p>
-                    <h3 class="portfolio-title">${post.title || 'Untitled Post'}</h3>
-                    <a href="/blog/${post.slug || post.id || '#'}" class="btn btn-outline">Read More</a>
-                </div>
-            </div>
-        `;
-        container.appendChild(slideDiv);
-    });
-    
-    // Create dots if container exists
-    if (dotsContainer) {
-        console.log('🔘 Creating navigation dots...');
-        for (let i = 0; i < slideCount; i++) {
-            const dot = document.createElement('span');
-            dot.classList.add('blog-slider-dot');
-            if (i === 0) dot.classList.add('active');
-            dot.addEventListener('click', () => goToSlide(i));
-            dotsContainer.appendChild(dot);
-        }
-    }
-    
-    const dots = document.querySelectorAll('.blog-slider-dot');
-    
-    // Update slider position
-    function updateSlider() {
-        container.style.transform = `translateX(-${currentIndex * 100}%)`;
-        dots.forEach((dot, index) => {
-            dot.classList.toggle('active', index === currentIndex);
-        });
-    }
-    
-    // Navigation functions
-    function goToSlide(index) {
-        currentIndex = index;
-        updateSlider();
-    }
-    
-    function nextSlide() {
-        currentIndex = (currentIndex + 1) % slideCount;
-        updateSlider();
-    }
-    
-    function prevSlide() {
-        currentIndex = (currentIndex - 1 + slideCount) % slideCount;
-        updateSlider();
-    }
-    
-    // Event listeners for navigation arrows
-    const nextBtn = document.querySelector('.blog-slider-next');
-    const prevBtn = document.querySelector('.blog-slider-prev');
-    
-    console.log('🎮 Setting up navigation controls:');
-    console.log('  - nextBtn:', !!nextBtn);
-    console.log('  - prevBtn:', !!prevBtn);
-    
-    if (nextBtn) nextBtn.addEventListener('click', nextSlide);
-    if (prevBtn) prevBtn.addEventListener('click', prevSlide);
-    
-    // Auto-advance (optional)
-    let slideInterval = setInterval(nextSlide, 5000);
-    
-    // Pause on hover
-    slider.addEventListener('mouseenter', () => clearInterval(slideInterval));
-    slider.addEventListener('mouseleave', () => {
-        slideInterval = setInterval(nextSlide, 5000);
-    });
-    
-    // Touch support for mobile
-    let touchStartX = 0;
-    let touchEndX = 0;
-    
-    slider.addEventListener('touchstart', (e) => {
-        touchStartX = e.changedTouches[0].screenX;
-        clearInterval(slideInterval);
-    }, {passive: true});
-    
-    slider.addEventListener('touchend', (e) => {
-        touchEndX = e.changedTouches[0].screenX;
-        handleSwipe();
-        slideInterval = setInterval(nextSlide, 5000);
-    }, {passive: true});
-    
-    function handleSwipe() {
-        if (touchEndX < touchStartX - 50) nextSlide();
-        if (touchEndX > touchStartX + 50) prevSlide();
-    }
-    
-    // Initialize first slide
-    updateSlider();
-    console.log('✅ Blog slider initialized successfully!');
-}
+
+
 
 // ==================== PROJECTS FUNCTIONALITY ==================== //
 
@@ -526,3 +276,8 @@ window.debugBlog = function() {
 console.log('📋 Script loaded. Available debug commands:');
 console.log('  - debugBlog() - manually trigger blog loading');
 console.log('  - loadBlogPosts() - reload blog posts');
+
+
+
+
+

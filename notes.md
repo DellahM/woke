@@ -69,3 +69,52 @@ my json loads post structure
 }
 
 
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('🚀 DOM Content Loaded - Starting initialization...');
+    initializeApp();
+});
+
+function initializeApp() {
+    console.log('📱 Initializing app components...');
+    initMobileMenu();
+    initScrollEffects();
+    initPortfolioFiltering();
+    initContactForm();
+    initSmoothScrolling();
+    
+    // Debug: Check if blog elements exist
+    const blogSection = document.getElementById('blog');
+    const blogSliderContainer = document.getElementById('blog-slider-container');
+    
+    console.log('🔍 Blog section found:', !!blogSection);
+    console.log('🔍 Blog slider container found:', !!blogSliderContainer);
+    
+    if (blogSliderContainer) {
+        console.log('📝 Loading blog posts...');
+        loadBlogPosts();
+    } else {
+        console.error('❌ Blog slider container not found in DOM');
+    }
+    
+    loadProjects();
+    loadTeam();
+}
+
+// Mobile Menu Toggle
+function initMobileMenu() {
+    const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+    const navMenu = document.getElementById('nav-menu');
+    
+    if (mobileMenuToggle && navMenu) {
+        mobileMenuToggle.addEventListener('click', function() {
+            navMenu.classList.toggle('show');
+        });
+
+        // Close menu when clicking a link
+        document.querySelectorAll('#nav-menu a, nav ul li a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('show');
+            });
+        });
+    }
+}
