@@ -1,4 +1,4 @@
-/* Projects Page Specific Styles - Navy Blue Theme */
+
 .projects-section {
     padding-bottom: 60px;
     margin-bottom: 80px; /* Increased margin to create more space */
@@ -422,4 +422,171 @@ section {
 
 .project-card img {
     transition: transform 0.5s ease;
+}
+
+
+/* Projects Section - Blue Theme */
+.projects {
+    padding: 5rem 0;
+    background-color: #f8fafc; /* Very light blue-gray background */
+}
+
+.projects__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+.projects__header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.projects__title {
+    font-size: 2.5rem;
+    color: #1e3a8a; /* Dark blue for headings */
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.projects__subtitle {
+    font-size: 1.1rem;
+    color: #4b5563; /* Dark gray-blue for subtext (AA contrast) */
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* Filter Buttons */
+.projects__filter {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 3rem;
+}
+
+.projects__filter-btn {
+    padding: 0.75rem 1.5rem;
+    background: transparent;
+    border: 2px solid #2563eb; /* Primary blue */
+    color: #2563eb;
+    border-radius: 30px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.projects__filter-btn:hover,
+.projects__filter-btn--active {
+    background: #2563eb;
+    color: white;
+}
+
+/* Projects Grid */
+.projects__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+/* Project Card */
+.project-card {
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(37, 99, 235, 0.1); /* Blue tint shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #e2e8f0; /* Light blue-gray border */
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(37, 99, 235, 0.15);
+}
+
+.project-card__image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.project-card__content {
+    padding: 1.5rem;
+}
+
+.project-card__title {
+    font-size: 1.25rem;
+    color: #1e40af; /* Dark blue for card titles */
+    margin-bottom: 0.5rem;
+}
+
+.project-card__category {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    background: #dbeafe; /* Light blue background */
+    color: #1d4ed8; /* Medium blue text */
+    border-radius: 30px;
+    font-size: 0.8rem;
+    margin-bottom: 1rem;
+    font-weight: 500;
+}
+
+.project-card__description {
+    color: #4b5563; /* Dark gray-blue for readability */
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+.project-card__link {
+    color: #2563eb;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: color 0.2s ease;
+}
+
+.project-card__link:hover {
+    color: #1e40af;
+    text-decoration: underline;
+}
+
+/* Loading Spinner */
+.projects__loader {
+    width: 50px;
+    height: 50px;
+    border: 5px solid #e2e8f0; /* Light blue-gray */
+    border-top: 5px solid #2563eb; /* Primary blue */
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 3rem auto;
+    grid-column: 1 / -1;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .projects {
+        padding: 3rem 0;
+    }
+    
+    .projects__title {
+        font-size: 2rem;
+    }
+    
+    .projects__subtitle {
+        font-size: 1rem;
+    }
+    
+    .projects__grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 1.5rem;
+    }
 }
