@@ -1,36 +1,42 @@
-// ==================== MOBILE MENU & NAVIGATION ==================== //
+// ==================== IMPROVED MOBILE MENU ==================== //
 function initMobileMenu() {
-  const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
-  const navMenu = document.getElementById('nav-menu');
-  
-  if (mobileMenuToggle && navMenu) {
-    // Ensure menu is closed on page load
-    navMenu.classList.remove('show');
+    const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+    const navMenu = document.getElementById('nav-menu');
+    const header = document.getElementById('header');
     
-    mobileMenuToggle.addEventListener('click', function() {
-      navMenu.classList.toggle('show');
-      
-      // Optional: Toggle aria-expanded for accessibility
-      const isExpanded = navMenu.classList.contains('show');
-      this.setAttribute('aria-expanded', isExpanded);
-    });
-    
-    // Close menu when clicking links
-    document.querySelectorAll('#nav-menu a').forEach(link => {
-      link.addEventListener('click', () => {
+    if (mobileMenuToggle && navMenu) {
+        // Ensure menu is closed on page load
         navMenu.classList.remove('show');
-        mobileMenuToggle.setAttribute('aria-expanded', 'false');
-      });
-    });
-  }
+        
+        mobileMenuToggle.addEventListener('click', function(e) {
+            e.stopPropagation();
+            navMenu.classList.toggle('show');
+            
+            // Toggle aria-expanded for accessibility
+            const isExpanded = navMenu.classList.contains('show');
+            this.setAttribute('aria-expanded', isExpanded);
+            document.body.style.overflow = isExpanded ? 'hidden' : '';
+        });
+        
+        // Close menu when clicking links
+        document.querySelectorAll('#nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('show');
+                mobileMenuToggle.setAttribute('aria-expanded', 'false');
+                document.body.style.overflow = '';
+            });
+        });
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!navMenu.contains(e.target) && !mobileMenuToggle.contains(e.target)) {
+                navMenu.classList.remove('show');
+                mobileMenuToggle.setAttribute('aria-expanded', 'false');
+                document.body.style.overflow = '';
+            }
+        });
+    }
 }
-
-// Call this early in your initialization
-document.addEventListener('DOMContentLoaded', function() {
-  initMobileMenu();
-  // Your other initialization code...
-});
-
 
 // ==================== HEADER SCROLL EFFECT ==================== //
 
