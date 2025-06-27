@@ -117,7 +117,7 @@ a:hover {
     position: fixed;
     width: 100%;
     top: 0;
-    z-index: 1000;
+    z-index: 999;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     transition: all 0.3s ease;
 }
@@ -3644,3 +3644,34 @@ footer {
     opacity: 1 !important;
     margin-left: 10px;
 }
+
+@media (max-width: 768px) {
+  .mobile-menu-toggle {
+    display: block;
+  }
+  
+  #nav-menu {
+    position: fixed;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    background: var(--primary, #112a5e);
+    padding: 20px;
+    transform: translateY(-100%);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 1000;
+  }
+  
+  #nav-menu.show {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  /*  mobile styles... */
+}
+
+
+
