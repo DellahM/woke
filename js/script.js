@@ -146,25 +146,24 @@ function displayBlogPosts(posts) {
   const blogGrid = document.getElementById('blog-grid');
   if (!blogGrid) return;
 
-  blogGrid.innerHTML = posts.map(post => `
-    <div class="blog-card">
-      <div class="blog-card-image">
-        <img src="${post.image || 'images/placeholder-blog.jpg'}" 
-             alt="${post.title}" 
-             loading="lazy"
-             onerror="this.src='images/placeholder-blog.jpg'">
+<article class="blog-post" 
+             data-categories="${post.categories?.join(',') || ''}"
+             data-searchable="${post.title.toLowerCase()} ${post.excerpt.toLowerCase()}">
+      <div class="blog-post-image">
+        ${post.category ? `<span class="blog-category">${post.category}</span>` : ''}
+        <img src="${post.image}" alt="${post.title}" loading="lazy">
       </div>
-      <div class="blog-card-content">
-        <span class="blog-category">${post.category || 'General'}</span>
-        <h3 class="blog-title">${post.title}</h3>
-        <p class="blog-excerpt">${post.excerpt}</p>
-        <a href="/blog/${post.slug}" class="read-more">Read More →</a>
+      <div class="blog-post-content">
+        <div class="blog-post-meta">
+          <span><i class="far fa-calendar"></i> ${formatDate(post.date)}</span>
+          ${post.author ? `<span><i class="far fa-user"></i> ${post.author}</span>` : ''}
+        </div>
+        <h3><a href="posts/${post.slug}.html">${post.title}</a></h3>
+        <p class="blog-post-excerpt">${post.excerpt}</p>
+        <a href="posts/${post.slug}.html" class="read-more-btn">Read More</a>
       </div>
-    </div>
-  `).join('');
-}
-
-
+    </article>
+  `;
 
 
 
@@ -191,7 +190,7 @@ async function loadProjects() {
                 <div class="project-image">
                     <img src="${project.image || 'images/placeholder-project.jpg'}" 
                          alt="${project.title || 'Project'}"
-                         onerror="this.src='images/placeholder-project.jpg'">
+                         onerror="this.src='images/placeholder-project.jpg'" />
                     <div class="project-tag">${project.category || 'Project'}</div>
                 </div>
                 <div class="project-content">

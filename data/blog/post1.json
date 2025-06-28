@@ -1,14 +1,14 @@
 {
   "id": "post1",
-  "title": "The Future of Web Development",
+  "title": "complete digital services guide",
   "excerpt": "Exploring the latest trends and technologies shaping web development in 2024.",
   "content": "<p>Web development is constantly evolving, and 2024 promises to bring exciting new developments...</p><p>Here are the key trends to watch:</p><ul><li>AI-powered development tools</li><li>WebAssembly adoption</li><li>Progressive Web Apps</li><li>Serverless architecture</li></ul>",
   "image": "images/blog1.jpg",
   "category": "Technology",
   "categories": ["technology", "web-development"],
-  "date": "2023-06-15",
-  "author": "John Doe",
-  "slug": "future-of-web-development",
+  "date": "2025-06-15",
+  "author": "Admin",
+  "slug": "complete-digital-services-guide",
   "tags": ["javascript", "react", "css"],
   "readTime": "5 min read",
   "featured": true
