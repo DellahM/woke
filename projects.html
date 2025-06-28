@@ -127,24 +127,10 @@
             </div>
         </div>
     </footer>
+<script src="js/script.js"></script>
+<script src="js/mobile-menu.js"></script>
+<script src="js/projects.js"></script>
 
-    <!-- JavaScript -->
-    <script src="js/projects.js" defer></script>
-    <script src="js/script.js" defer></script>
-    <script> // Mobile Menu Toggle
-        document.querySelector('.mobile-menu-toggle').addEventListener('click', function() {
-            document.getElementById('nav-menu').classList.toggle('show');
-        });
 
-        // Header Scroll Effect
-        window.addEventListener('scroll', function() {
-            const header = document.getElementById('header');
-            if (window.scrollY > 100) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        });
-</script>
 </body>
 </html>
