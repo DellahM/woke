@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Discover five powerful digital tools every African startup should use to streamline operations, reach customers, and scale smarter." />
+<meta name="keywords" content="startup tools, African entrepreneurship, digital tools, tech for business, WokeBusiness blog" />
+<link rel="canonical" href="https://wokebusiness.org/blog/supercharge-startup.html" />
+
+            <!-- Social Media (OG + Twitter) same across pages -->
+<meta property="og:site_name" content="WokeBusiness Tech" />
+<meta property="og:image" content="https://wokebusiness.org/images/social-preview.jpg" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://wokebusiness.org/images/social-preview.jpg" />
+<meta name="robots" content="index, follow" />
+
+
+    <title>{{POST_TITLE}} | WokeTech Blog</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/blog-slider.css">
+     <link rel="stylesheet" href="css/post.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header id="header" class="scrolled">
+        <div class="header-container">
+            <a href="../index.html" class="logo">
+                <img src="../images/wokebusiness logo.ico" alt="WokeBusiness Tech" class="logo-img">
+                <span class="logo-text">WOKE <span class="logo-highlight">TECH</span></span>
+            </a>
+
+            <button class="mobile-menu-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav>
+                <ul id="nav-menu">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../projects.html">Projects</a></li>
+                    <li><a href="../blog.html" class="active">Blog</a></li>
+                    <li><a href="../contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Post Hero Section -->
+    <section class="hero post-hero" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('../images/{{POST_HERO_IMAGE}}');">
+        <div class="container">
+            <div class="hero-content">
+                <div class="post-meta">
+                    <span class="blog-category">{{POST_CATEGORY}}</span>
+                    <span><i class="far fa-calendar"></i> {{POST_DATE}}</span>
+                    <span><i class="far fa-user"></i> By {{POST_AUTHOR}}</span>
+                    <span><i class="far fa-clock"></i> {{READ_TIME}}</span>
+                </div>
+                <h1 class="hero-title">{{POST_TITLE}}</h1>
+                <div class="post-tags">
+                    {{#POST_TAGS}}
+                    <a href="../blog/tag/{{.}}" class="tag">#{{.}}</a>
+                    {{/POST_TAGS}}
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Post Content Section -->
+    <section class="section post-content-section">
+        <div class="container">
+            <article class="post-content">
+                <!-- Your post content goes here -->
+                <p class="post-excerpt">{{POST_EXCERPT}}</p>
+                
+                <!-- Main content sections -->
+                <div class="content-wrapper">
+                    {{POST_CONTENT}}
+                </div>
+                
+                <!-- Author Bio -->
+                <div class="author-bio">
+                    <div class="author-image">
+                        <img src="../images/authors/{{AUTHOR_IMAGE}}" alt="{{POST_AUTHOR}}">
+                    </div>
+                    <div class="author-info">
+                        <h4>About {{POST_AUTHOR}}</h4>
+                        <p>{{AUTHOR_BIO}}</p>
+                        <div class="author-social">
+                            {{#AUTHOR_SOCIAL}}
+                            <a href="{{LINK}}" target="_blank"><i class="fab fa-{{PLATFORM}}"></i></a>
+                            {{/AUTHOR_SOCIAL}}
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Post Navigation -->
+                <div class="post-navigation">
+                    {{#PREV_POST}}
+                    <a href="../blog/{{SLUG}}" class="prev-post">
+                        <i class="fas fa-chevron-left"></i>
+                        <div>
+                            <span>Previous Post</span>
+                            <h5>{{TITLE}}</h5>
+                        </div>
+                    </a>
+                    {{/PREV_POST}}
+                    
+                    {{#NEXT_POST}}
+                    <a href="../blog/{{SLUG}}" class="next-post">
+                        <div>
+                            <span>Next Post</span>
+                            <h5>{{TITLE}}</h5>
+                        </div>
+                        <i class="fas fa-chevron-right"></i>
+                    </a>
+                    {{/NEXT_POST}}
+                </div>
+            </article>
+            
+            <!-- Related Posts Sidebar -->
+            <aside class="post-sidebar">
+                <div class="sidebar-widget">
+                    <h3 class="widget-title">Latest Posts</h3>
+                    <ul class="latest-posts" id="latest-posts">
+                        <!-- Will be populated by JavaScript -->
+                        <div class="loading-spinner">
+                            <i class="fas fa-spinner fa-spin"></i>
+                            <p>Loading latest posts...</p>
+                        </div>
+                    </ul>
+                </div>
+                
+                <div class="sidebar-widget">
+                    <h3 class="widget-title">Popular Posts</h3>
+                    <ul class="popular-posts" id="popular-posts">
+                        <!-- Will be populated by JavaScript -->
+                        <div class="loading-spinner">
+                            <i class="fas fa-spinner fa-spin"></i>
+                            <p>Loading popular posts...</p>
+                        </div>
+                    </ul>
+                </div>
+                
+                <div class="sidebar-widget">
+                    <h3 class="widget-title">Categories</h3>
+                    <ul class="category-list">
+                        <!-- Will be populated by JavaScript -->
+                    </ul>
+                </div>
+            </aside>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="section newsletter-section">
+        <div class="container">
+            <div class="newsletter-container">
+                <div class="newsletter-content">
+                    <h3>Subscribe to Our Newsletter</h3>
+                    <p>Get the latest updates and news directly to your inbox</p>
+                </div>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Your email address" required>
+                    <button type="submit" class="btn">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-widget">
+                    <h3>About Us</h3>
+                    <p>We are a creative team dedicated to building amazing digital experiences for our clients.</p>
+                    <div class="footer-social">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-widget">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="../index.html" class="footer-link">Home</a></li>
+                        <li><a href="../about.html" class="footer-link">About Us</a></li>
+                        <li><a href="../services.html" class="footer-link">Services</a></li>
+                        <li><a href="../blog.html" class="footer-link">Blog</a></li>
+                        <li><a href="../contact.html" class="footer-link">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-widget">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="#" class="footer-link">Web Design</a></li>
+                        <li><a href="#" class="footer-link">Web Development</a></li>
+                        <li><a href="#" class="footer-link">Digital Marketing</a></li>
+                        <li><a href="#" class="footer-link">SEO Services</a></li>
+                        <li><a href="#" class="footer-link">Graphic Design</a></li>
+                    </ul>
+                </div>
+                <div class="footer-widget">
+                    <h3>Contact Info</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Business Ave, City</li>
+                        <li><i class="fas fa-phone"></i> +1 234 567 890</li>
+                        <li><i class="fas fa-envelope"></i> info@yourcompany.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="copyright">&copy; 2023 WokeTech. All Rights Reserved.</p>
+                <div class="footer-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Mobile Menu Toggle
+        document.querySelector('.mobile-menu-toggle').addEventListener('click', function() {
+            document.getElementById('nav-menu').classList.toggle('show');
+        });
+
+        // Header Scroll Effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Load related posts
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load latest and popular posts
+            fetch('/data/blog/posts.json')
+                .then(response => response.json())
+                .then(posts => {
+                    // Sort by date for latest posts
+                    const latestPosts = [...posts]
+                        .sort((a, b) => new Date(b.date) - new Date(a.date))
+                        .slice(0, 5);
+                    
+                    // Sort by some popularity metric (you might need to add views or likes to your JSON)
+                    const popularPosts = [...posts]
+                        .sort((a, b) => (b.views || 0) - (a.views || 0))
+                        .slice(0, 5);
+                    
+                    // Render latest posts
+                    const latestContainer = document.getElementById('latest-posts');
+                    latestContainer.innerHTML = latestPosts.map(post => `
+                        <li>
+                            <a href="../blog/${post.slug}">
+                                <div class="popular-post">
+                                    <img src="../${post.image}" alt="${post.title}">
+                                    <div class="popular-post-content">
+                                        <h4>${post.title}</h4>
+                                        <span>${new Date(post.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                    `).join('');
+                    
+                    // Render popular posts
+                    const popularContainer = document.getElementById('popular-posts');
+                    popularContainer.innerHTML = popularPosts.map(post => `
+                        <li>
+                            <a href="../blog/${post.slug}">
+                                <div class="popular-post">
+                                    <img src="../${post.image}" alt="${post.title}">
+                                    <div class="popular-post-content">
+                                        <h4>${post.title}</h4>
+                                        <span>${new Date(post.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                    `).join('');
+                    
+                    // Extract and render categories
+                    const categories = {};
+                    posts.forEach(post => {
+                        if (post.categories) {
+                            post.categories.forEach(cat => {
+                                categories[cat] = (categories[cat] || 0) + 1;
+                            });
+                        }
+                    });
+                    
+                    const categoryContainer = document.querySelector('.category-list');
+                    categoryContainer.innerHTML = Object.entries(categories)
+                        .map(([cat, count]) => `
+                            <li><a href="../blog.html?category=${cat}">${cat.charAt(0).toUpperCase() + cat.slice(1)} <span>(${count})</span></a></li>
+                        `)
+                        .join('');
+                })
+                .catch(error => {
+                    console.error('Error loading related posts:', error);
+                    document.getElementById('latest-posts').innerHTML = '<p>Could not load latest posts</p>';
+                    document.getElementById('popular-posts').innerHTML = '<p>Could not load popular posts</p>';
+                });
+        });
+    </script>
+    
+    <script src="script.js"></script>
+        <script src="js/blog.js"></script>
+   
+        <script src="js/mobile-menu.js"></script>
+ 
+</body>
+</html>
