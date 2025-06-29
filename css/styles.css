@@ -132,6 +132,71 @@ a:hover {
     margin: 0 auto;
     position: relative;
 }
+/* === Base Desktop Nav === */
+#nav-menu {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
+}
+
+#nav-menu li a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+#nav-menu li a:hover {
+  color: var(--accent-lightest);
+}
+
+.mobile-menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1.8rem;
+  cursor: pointer;
+  z-index: 1100;
+}
+
+/* === Mobile Nav Override === */
+@media (max-width: 768px) {
+  .mobile-menu-toggle {
+    display: block;
+  }
+
+  #nav-menu {
+    display: none;
+    position: fixed;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    flex-direction: column;
+    background: var(--primary, #112a5e);
+    padding: 20px;
+    gap: 1rem;
+    z-index: 1000;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+  }
+
+  #nav-menu.show {
+    display: flex;
+  }
+
+  #nav-menu li {
+    width: 100%;
+  }
+
+  #nav-menu li a {
+    padding: 12px 10px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    text-align: left;
+    display: block;
+  }
+}
 
 
 /* ==================== LOGO STYLES - FIXED ==================== */
