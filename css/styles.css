@@ -213,9 +213,6 @@ a:hover {
 .logo-img {
     height: 36px;
     width: auto;
-    height: auto;
-    display: block;
-    object-fit: contain;
     transition: transform 0.3s ease;
     
 }
