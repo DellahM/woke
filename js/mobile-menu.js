@@ -73,6 +73,10 @@ function initMobileMenu() {
         });
     }
 }
+document.addEventListener('DOMContentLoaded', () => {
+  initMobileMenu();
+  initScrollEffects(); // If you want header scroll styling
+});
 
 // ==================== HEADER SCROLL EFFECT ==================== //
 function initScrollEffects() {
