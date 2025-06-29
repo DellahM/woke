@@ -153,26 +153,49 @@ a:hover {
     color: var(--accent-lightest);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 768px), (orientation: portrait) {
+  .mobile-menu-toggle {
+    display: block;
+  }
+
   #nav-menu {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.4s ease;
+    display: none;
     flex-direction: column;
-    background: var(--primary, #112a5e);
     position: fixed;
-    top: 70px;
+    top: 70px; /* adjust based on your header height */
     left: 0;
     width: 100%;
-    gap: 1rem;
-    z-index: 1000;
+    background: var(--primary, #112a5e);
+    gap: 1.2rem;
+    padding: 20px;
+    z-index: 999;
     box-shadow: 0 5px 20px rgba(0,0,0,0.3);
   }
 
   #nav-menu.show {
-    max-height: 500px; /* Adjust based on your nav content size */
+    display: flex;
+  }
+
+  #nav-menu li {
+    width: 100%;
+  }
+
+  #nav-menu li a {
+    display: block;
+    width: 100%;
+    color: #fff;
+    padding: 12px 10px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    text-align: left;
+    text-decoration: none;
+  }
+
+  #nav-menu li a:hover {
+    color: var(--accent-lightest);
   }
 }
+
+
 
 
 /* ==================== LOGO STYLES - FIXED ==================== */
