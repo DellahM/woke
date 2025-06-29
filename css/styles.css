@@ -184,6 +184,7 @@ a:hover {
 
   #nav-menu.show {
     display: flex;
+    flex-direction: column;
   }
 
   #nav-menu li {
