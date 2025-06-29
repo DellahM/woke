@@ -1,57 +1,70 @@
 // ==================== IMPROVED MOBILE MENU ==================== //
 function initMobileMenu() {
-    const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
-    const navMenu = document.getElementById('nav-menu');
-    const header = document.getElementById('header');
-    
-    if (mobileMenuToggle && navMenu) {
-        // Ensure menu is closed on page load
+  const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+  const navMenu = document.getElementById('nav-menu');
+  const icon = mobileMenuToggle?.querySelector('i');
+
+  if (mobileMenuToggle && navMenu) {
+    navMenu.classList.remove('show');
+
+    mobileMenuToggle.addEventListener('click', function (e) {
+      e.stopPropagation();
+      navMenu.classList.toggle('show');
+
+      const isExpanded = navMenu.classList.contains('show');
+      this.setAttribute('aria-expanded', isExpanded);
+      document.body.style.overflow = isExpanded ? 'hidden' : '';
+
+      // Toggle icon
+      if (icon) {
+        icon.className = isExpanded ? 'fas fa-times' : 'fas fa-bars';
+      }
+    });
+
+    document.querySelectorAll('#nav-menu a').forEach(link => {
+      link.addEventListener('click', () => {
         navMenu.classList.remove('show');
-        
-        mobileMenuToggle.addEventListener('click', function(e) {
-            e.stopPropagation();
-            navMenu.classList.toggle('show');
-            
-            // Toggle aria-expanded for accessibility
-            const isExpanded = navMenu.classList.contains('show');
-            this.setAttribute('aria-expanded', isExpanded);
-            document.body.style.overflow = isExpanded ? 'hidden' : '';
-        });
-        
-        // Close menu when clicking links
-        document.querySelectorAll('#nav-menu a').forEach(link => {
-            link.addEventListener('click', () => {
-                navMenu.classList.remove('show');
-                mobileMenuToggle.setAttribute('aria-expanded', 'false');
-                document.body.style.overflow = '';
-            });
-        });
-        
-        // Close menu when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!navMenu.contains(e.target) && !mobileMenuToggle.contains(e.target)) {
-                navMenu.classList.remove('show');
-                mobileMenuToggle.setAttribute('aria-expanded', 'false');
-                document.body.style.overflow = '';
-            }
-        });
-    }
+        mobileMenuToggle.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+        if (icon) icon.className = 'fas fa-bars';
+      });
+    });
+
+    document.addEventListener('click', e => {
+      if (!navMenu.contains(e.target) && !mobileMenuToggle.contains(e.target)) {
+        navMenu.classList.remove('show');
+        mobileMenuToggle.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+        if (icon) icon.className = 'fas fa-bars';
+      }
+    });
+
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 768) {
+        navMenu.classList.remove('show');
+        mobileMenuToggle.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+        if (icon) icon.className = 'fas fa-bars';
+      }
+    });
+  }
 }
 
 // ==================== HEADER SCROLL EFFECT ==================== //
-
 function initScrollEffects() {
-    window.addEventListener('scroll', function() {
-        const header = document.getElementById('header');
-        if (header) {
-            if (window.scrollY > 50) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        }
-    });
+  const header = document.getElementById('header');
+  window.addEventListener('scroll', () => {
+    if (header) {
+      header.classList.toggle('scrolled', window.scrollY > 50);
+    }
+  });
 }
+
+// ==================== INITIALIZATION ==================== //
+document.addEventListener('DOMContentLoaded', () => {
+  initMobileMenu();
+  initScrollEffects();
+});
 
 // ==================== PORTFOLIO FILTERING ==================== //
 
