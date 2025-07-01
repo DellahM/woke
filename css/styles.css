@@ -4162,3 +4162,74 @@ footer {
         margin-bottom: 1rem;
     }
 }
+
+/* ==================== MOBILE FIRST LAYOUT ==================== */
+.post-content-section .container {
+  display: flex;
+  flex-direction: column; /* Stack vertically by default */
+}
+
+.post-content {
+  order: 1; /* Content comes first */
+  width: 100%;
+}
+
+.post-sidebar {
+  order: 2; /* Sidebar comes second */
+  width: 100%;
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background: #f8f9fa;
+  border-radius: 8px;
+}
+
+/* ==================== DESKTOP LAYOUT ==================== */
+@media (min-width: 992px) {
+  .post-content-section .container {
+    flex-direction: row; /* Side by side on desktop */
+    gap: 3rem;
+  }
+  
+  .post-sidebar {
+    order: unset; /* Reset order */
+    width: 350px;
+    position: sticky;
+    top: 120px;
+    background: transparent;
+    padding: 0;
+    margin-top: 0;
+  }
+}
+
+
+/* Mobile-specific improvements */
+@media (max-width: 991px) {
+  .sidebar-widget {
+    margin-bottom: 1.5rem;
+  }
+  
+  .popular-post {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+  
+  .popular-post img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+  }
+  
+  .category-list a {
+    padding: 0.8rem 0;
+    border-bottom: 1px solid #eee;
+  }
+}
+
+.post-content {
+  order: 1 !important;
+}
+.post-sidebar {
+  order: 2 !important;
+}
+
