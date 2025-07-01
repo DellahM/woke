@@ -31,14 +31,6 @@
     --shadow-medium: rgba(21, 7, 52, 0.15);
     --shadow-dark: rgba(21, 7, 52, 0.25);
 }
-
-
-
-
-
-
-
-
 /* ==================== RESET AND BASE STYLES ==================== */
 * {
     margin: 0;
@@ -4023,25 +4015,46 @@ footer {
     background: #f8f9fa !important;
     border-radius: 12px !important;
   }
-  
-  /* Visual confirmation */
-  .post-content::before {
-    content: "CONTENT AREA (Should appear FIRST)";
-    display: block;
-    color: red;
-    font-weight: bold;
-    margin-bottom: 2rem;
-    border-bottom: 2px solid red;
-    padding-bottom: 1rem;
+}
+
+
+
+/* ===== Mobile Layout ===== */
+@media (max-width: 991px) {
+  .post-content-section .container {
+    display: flex;
+    flex-direction: column;
   }
   
-  .post-sidebar::before {
-    content: "SIDEBAR AREA (Should appear SECOND)";
-    display: block;
-    color: blue;
-    font-weight: bold;
-    margin-bottom: 2rem;
-    border-bottom: 2px solid blue;
-    padding-bottom: 1rem;
+  .post-content {
+    order: 1;
+    width: 100%;
+  }
+  
+  .post-sidebar {
+    order: 2;
+    width: 100%;
+    position: static;
+    margin-top: 3rem;
+    padding: 2rem;
+    background: #f8f9fa;
+    border-radius: 12px;
+  }
+}
+
+/* ===== Desktop Layout ===== */
+@media (min-width: 992px) {
+  .post-content-section .container {
+    flex-direction: row;
+    gap: 3rem;
+  }
+  
+  .post-sidebar {
+    width: 350px;
+    position: sticky;
+    top: 120px;
+    background: transparent;
+    padding: 0;
+    margin-top: 0;
   }
 }
