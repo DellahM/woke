@@ -23,6 +23,20 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
+   <style>
+  /* TEMPORARY MOBILE FIX - will help identify if CSS is loading */
+  @media (max-width: 991px) {
+    .blog-test-visible { display: block !important; }
+    .post-content-section .container {
+      display: flex !important;
+      flex-direction: column !important;
+    }
+    .post-content { order: 1 !important; }
+    .post-sidebar { order: 2 !important; margin-top: 2rem !important; }
+  }
+</style>
+<div class="blog-test-visible" style="display:none;">CSS TEST VISIBLE</div>
+
     <!-- Header Section -->
     <header id="header" class="scrolled">
         <div class="header-container">

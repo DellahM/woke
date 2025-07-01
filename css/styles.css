@@ -4002,234 +4002,46 @@ footer {
     }
 }
 
-
-
-/* Mobile-first layout */
-.blog-container {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  overflow-x: hidden; /* Prevent horizontal overflow */
-}
-
-.blog-main {
-  width: 100%;
-  order: 1; /* Force content first on mobile */
-}
-
-.blog-sidebar {
-  width: 100%;
-  order: 2; /* Force sidebar second on mobile */
-  padding: 1rem;
-  box-sizing: border-box;
-}
-
-/* Fix for overflowing elements */
-.blog-sidebar * {
-  max-width: 100%;
-  word-break: break-word;
-}
-
-/* Mobile-specific sidebar styling */
+/* ==================== MOBILE FORCE FIX ==================== */
 @media (max-width: 991px) {
-  .blog-sidebar {
-    margin-top: 2rem;
-    padding: 1.5rem;
-    background: #f8f9fa;
-    border-radius: 8px;
-  }
-  
-  .sidebar-widget {
-    margin-bottom: 1.5rem;
-  }
-  
-  .category-list li, 
-  .popular-posts li {
-    margin-bottom: 0.8rem;
-  }
-  
-  .popular-post {
-    display: flex;
-    gap: 1rem;
-    align-items: center;
-  }
-  
-  .popular-post img {
-    width: 80px;
-    height: 80px;
-    object-fit: cover;
-  }
-}
-
-/* Desktop layout */
-@media (min-width: 992px) {
-  .blog-container {
-    flex-direction: row;
-    gap: 2rem;
-  }
-  
-  .blog-main {
-    flex: 1;
-    order: unset; /* Reset to natural order */
-  }
-  
-  .blog-sidebar {
-    width: 300px;
-    order: unset; /* Reset to natural order */
-    position: sticky;
-    top: 20px;
-    align-self: flex-start;
-  }
-}
-
-.blog-sidebar img {
-  max-width: 100%;
-  height: auto;
-}
-
-
-.blog-search input {
-  width: 100%;
-  box-sizing: border-box;
-}
-
-
-
-.category-list a {
-  display: block;
-  padding: 0.5rem 0;
-}
-
-
-
-
-/* Responsive Styles */
-@media (max-width: 992px) {
-    .post-content-section .container {
-        flex-direction: column;
-    }
-    
-    .post-sidebar {
-        width: 100%;
-        position: static;
-        order: -1; /* Change this to 2 to move sidebar after content */
-        margin-top: 2rem;
-        padding: 1.5rem;
-        background: #f8f9fa;
-        border-radius: 8px;
-    }
-    
-    .post-hero .hero-title {
-        font-size: 2.5rem;
-    }
-}
-
-@media (max-width: 768px) {
-    /* Keep all your existing 768px styles */
-    
-    /* Add this to ensure proper spacing */
-    .post-content {
-        order: 1;
-    }
-    
-    .post-sidebar {
-        order: 2;
-    }
-}
-
-@media (max-width: 768px) {
-    .post-content {
-        padding-bottom: 2rem;
-        border-bottom: 1px solid #eee;
-        margin-bottom: 2rem;
-    }
-}
-
-
-@media (max-width: 768px) {
-    .sidebar-widget {
-        margin-bottom: 1.5rem;
-    }
-    
-    .popular-post {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-    
-    .popular-post img {
-        width: 100%;
-        height: auto;
-        margin-bottom: 1rem;
-    }
-}
-
-/* ==================== MOBILE FIRST LAYOUT ==================== */
-.post-content-section .container {
-  display: flex;
-  flex-direction: column; /* Stack vertically by default */
-}
-
-.post-content {
-  order: 1; /* Content comes first */
-  width: 100%;
-}
-
-.post-sidebar {
-  order: 2; /* Sidebar comes second */
-  width: 100%;
-  margin-top: 2rem;
-  padding: 1.5rem;
-  background: #f8f9fa;
-  border-radius: 8px;
-}
-
-/* ==================== DESKTOP LAYOUT ==================== */
-@media (min-width: 992px) {
   .post-content-section .container {
-    flex-direction: row; /* Side by side on desktop */
-    gap: 3rem;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+  
+  .post-content {
+    order: 1 !important;
+    width: 100% !important;
   }
   
   .post-sidebar {
-    order: unset; /* Reset order */
-    width: 350px;
-    position: sticky;
-    top: 120px;
-    background: transparent;
-    padding: 0;
-    margin-top: 0;
-  }
-}
-
-
-/* Mobile-specific improvements */
-@media (max-width: 991px) {
-  .sidebar-widget {
-    margin-bottom: 1.5rem;
+    order: 2 !important;
+    width: 100% !important;
+    position: static !important;
+    margin-top: 3rem !important;
+    padding: 2rem !important;
+    background: #f8f9fa !important;
+    border-radius: 12px !important;
   }
   
-  .popular-post {
-    display: flex;
-    gap: 1rem;
-    align-items: center;
+  /* Visual confirmation */
+  .post-content::before {
+    content: "CONTENT AREA (Should appear FIRST)";
+    display: block;
+    color: red;
+    font-weight: bold;
+    margin-bottom: 2rem;
+    border-bottom: 2px solid red;
+    padding-bottom: 1rem;
   }
   
-  .popular-post img {
-    width: 80px;
-    height: 80px;
-    object-fit: cover;
+  .post-sidebar::before {
+    content: "SIDEBAR AREA (Should appear SECOND)";
+    display: block;
+    color: blue;
+    font-weight: bold;
+    margin-bottom: 2rem;
+    border-bottom: 2px solid blue;
+    padding-bottom: 1rem;
   }
-  
-  .category-list a {
-    padding: 0.8rem 0;
-    border-bottom: 1px solid #eee;
-  }
 }
-
-.post-content {
-  order: 1 !important;
-}
-.post-sidebar {
-  order: 2 !important;
-}
-
