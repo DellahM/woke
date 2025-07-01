@@ -1,54 +1,71 @@
 // ==================== IMPROVED MOBILE MENU ==================== //
+
 function initMobileMenu() {
   const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
   const navMenu = document.getElementById('nav-menu');
-  const icon = mobileMenuToggle?.querySelector('i');
-
+  
   if (mobileMenuToggle && navMenu) {
+    // Initialize menu state
     navMenu.classList.remove('show');
-
-    mobileMenuToggle.addEventListener('click', function (e) {
-      e.stopPropagation();
-      navMenu.classList.toggle('show');
-
-      const isExpanded = navMenu.classList.contains('show');
-      this.setAttribute('aria-expanded', isExpanded);
-      document.body.style.overflow = isExpanded ? 'hidden' : '';
-
+    mobileMenuToggle.setAttribute('aria-expanded', 'false');
+    
+    // Toggle menu function
+    const toggleMenu = () => {
+      const isExpanded = navMenu.classList.toggle('show');
+      mobileMenuToggle.setAttribute('aria-expanded', isExpanded.toString());
+      document.body.classList.toggle('menu-open', isExpanded);
+      
       // Toggle icon
+      const icon = mobileMenuToggle.querySelector('i');
       if (icon) {
         icon.className = isExpanded ? 'fas fa-times' : 'fas fa-bars';
       }
+    };
+    
+    // Click event for mobile menu toggle
+    mobileMenuToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      toggleMenu();
     });
-
+    
+    // Close menu when clicking on links
     document.querySelectorAll('#nav-menu a').forEach(link => {
       link.addEventListener('click', () => {
-        navMenu.classList.remove('show');
-        mobileMenuToggle.setAttribute('aria-expanded', 'false');
-        document.body.style.overflow = '';
-        if (icon) icon.className = 'fas fa-bars';
+        if (navMenu.classList.contains('show')) {
+          toggleMenu();
+        }
       });
     });
-
-    document.addEventListener('click', e => {
+    
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
       if (!navMenu.contains(e.target) && !mobileMenuToggle.contains(e.target)) {
-        navMenu.classList.remove('show');
-        mobileMenuToggle.setAttribute('aria-expanded', 'false');
-        document.body.style.overflow = '';
-        if (icon) icon.className = 'fas fa-bars';
+        if (navMenu.classList.contains('show')) {
+          toggleMenu();
+        }
       }
     });
-
+    
+    // Close menu on escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && navMenu.classList.contains('show')) {
+        toggleMenu();
+      }
+    });
+    
+    // Reset menu on window resize
     window.addEventListener('resize', () => {
-      if (window.innerWidth > 768) {
-        navMenu.classList.remove('show');
-        mobileMenuToggle.setAttribute('aria-expanded', 'false');
-        document.body.style.overflow = '';
-        if (icon) icon.className = 'fas fa-bars';
+      if (window.innerWidth > 768 && navMenu.classList.contains('show')) {
+        toggleMenu();
       }
     });
   }
 }
+
+
+
+
+
 
 // ==================== HEADER SCROLL EFFECT ==================== //
 function initScrollEffects() {
@@ -159,8 +176,9 @@ function displayBlogPosts(posts) {
   const blogGrid = document.getElementById('blog-grid');
   if (!blogGrid) return;
 
-<article class="blog-post" 
-             data-categories="${post.categories?.join(',') || ''}"
+  blogGrid.innerHTML = posts.map(post => `
+    <article class="blog-post" 
+             data-categories="${(post.categories && post.categories.join(', ')) || ''}"
              data-searchable="${post.title.toLowerCase()} ${post.excerpt.toLowerCase()}">
       <div class="blog-post-image">
         ${post.category ? `<span class="blog-category">${post.category}</span>` : ''}
@@ -168,7 +186,7 @@ function displayBlogPosts(posts) {
       </div>
       <div class="blog-post-content">
         <div class="blog-post-meta">
-          <span><i class="far fa-calendar"></i> ${formatDate(post.date)}</span>
+          <span><i class="far fa-calendar"></i> ${typeof formatDate === 'function' ? formatDate(post.date) : post.date}</span>
           ${post.author ? `<span><i class="far fa-user"></i> ${post.author}</span>` : ''}
         </div>
         <h3><a href="posts/${post.slug}.html">${post.title}</a></h3>
@@ -176,62 +194,131 @@ function displayBlogPosts(posts) {
         <a href="posts/${post.slug}.html" class="read-more-btn">Read More</a>
       </div>
     </article>
-  `;
+  `).join('');
+}
 
 
 
 
 
 // ==================== PROJECTS FUNCTIONALITY ==================== //
-
 async function loadProjects() {
     const container = document.getElementById('projects-container');
-    if (!container) return;
+    if (!container) {
+        console.warn('Projects container element not found');
+        return;
+    }
+
+    // Show loading state
+    container.innerHTML = '<div class="loading-spinner"></div>';
     
     try {
         const response = await fetch('/data/projects.json');
-        if (!response.ok) throw new Error('Failed to load projects');
+        
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
         
         const projects = await response.json();
+
+        // Validate projects data structure
+        if (!Array.isArray(projects)) {
+            throw new Error('Invalid projects data format');
+        }
+
+        // Clear container
         container.innerHTML = '';
         
+        // Process each project
         projects.forEach(project => {
-            const projectDiv = document.createElement('div');
-            projectDiv.className = 'project-card';
-            projectDiv.setAttribute('data-category', project.category || '');
-            projectDiv.innerHTML = `
-                <div class="project-image">
-                    <img src="${project.image || 'images/placeholder-project.jpg'}" 
-                         alt="${project.title || 'Project'}"
-                         onerror="this.src='images/placeholder-project.jpg'" />
-                    <div class="project-tag">${project.category || 'Project'}</div>
-                </div>
-                <div class="project-content">
-                    <h3 class="project-title">${project.title || 'Untitled Project'}</h3>
-                    <div class="project-meta">
-                        <div class="project-client">
-                            <span>👤</span> ${project.client || 'Client'}
+            try {
+                // Validate required fields
+                const projectData = {
+                    title: project.title || 'Untitled Project',
+                    category: project.category || 'Uncategorized',
+                    client: project.client || 'Anonymous Client',
+                    date: project.date ? new Date(project.date) : null,
+                    description: project.description || 'No description available',
+                    technologies: Array.isArray(project.technologies) ? project.technologies : [],
+                    url: project.url || '#',
+                    image: project.image || 'images/placeholder-project.jpg'
+                };
+
+                const projectDiv = document.createElement('div');
+                projectDiv.className = 'project-card';
+                projectDiv.setAttribute('data-category', projectData.category.toLowerCase().replace(/\s+/g, '-'));
+                
+                projectDiv.innerHTML = `
+                    <div class="project-image">
+                        <img src="${projectData.image}" 
+                             alt="${projectData.title}"
+                             loading="lazy"
+                             onerror="this.src='images/placeholder-project.jpg'" />
+                        <div class="project-tag">${projectData.category}</div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">${projectData.title}</h3>
+                        <div class="project-meta">
+                            <div class="project-client">
+                                <span aria-hidden="true">👤</span> 
+                                <span>${projectData.client}</span>
+                            </div>
+                            ${projectData.date ? `
+                            <div class="project-date">
+                                <span aria-hidden="true">📅</span> 
+                                <span>${projectData.date.toLocaleDateString()}</span>
+                            </div>
+                            ` : ''}
                         </div>
-                        <div class="project-date">
-                            <span>📅</span> ${project.date ? new Date(project.date).toLocaleDateString() : 'Date'}
+                        <p class="project-desc">${projectData.description}</p>
+                        ${projectData.technologies.length > 0 ? `
+                        <div class="project-details">
+                            ${projectData.technologies.map(tech => 
+                                `<span class="project-detail-item">${tech}</span>`
+                            ).join('')}
+                        </div>
+                        ` : ''}
+                        <div class="project-links">
+                            <a href="${projectData.url}" target="_blank" rel="noopener noreferrer" class="btn">
+                                Visit Website
+                            </a>
+                            <button class="btn btn-outline view-case-study" data-project-id="${project.id || ''}">
+                                Case Study
+                            </button>
                         </div>
                     </div>
-                    <p class="project-desc">${project.description || 'Project description'}</p>
-                    <div class="project-details">
-                        ${(project.technologies || []).map(tech => `<span class="project-detail-item">${tech}</span>`).join('')}
-                    </div>
-                    <div class="project-links">
-                        <a href="${project.url || '#'}" target="_blank" class="btn">Visit Website</a>
-                        <a href="#" class="btn btn-outline">Case Study</a>
-                    </div>
-                </div>
-            `;
-            container.appendChild(projectDiv);
+                `;
+                
+                container.appendChild(projectDiv);
+                
+                // Add event listener for case study button
+                const caseStudyBtn = projectDiv.querySelector('.view-case-study');
+                if (caseStudyBtn) {
+                    caseStudyBtn.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        // Handle case study view logic here
+                        console.log('View case study for project:', project.id || project.title);
+                    });
+                }
+                
+            } catch (error) {
+                console.error('Error processing project:', error);
+            }
         });
+
     } catch (error) {
         console.error('Error loading projects:', error);
-        if (container) {
-            container.innerHTML = '<p>Unable to load projects at this time.</p>';
+        container.innerHTML = `
+            <div class="error-message">
+                <p>Unable to load projects at this time.</p>
+                <button class="btn retry-load-projects">Try Again</button>
+            </div>
+        `;
+        
+        // Add retry functionality
+        const retryBtn = container.querySelector('.retry-load-projects');
+        if (retryBtn) {
+            retryBtn.addEventListener('click', loadProjects);
         }
     }
 }
