@@ -4099,3 +4099,66 @@ footer {
   display: block;
   padding: 0.5rem 0;
 }
+
+
+
+
+/* Responsive Styles */
+@media (max-width: 992px) {
+    .post-content-section .container {
+        flex-direction: column;
+    }
+    
+    .post-sidebar {
+        width: 100%;
+        position: static;
+        order: -1; /* Change this to 2 to move sidebar after content */
+        margin-top: 2rem;
+        padding: 1.5rem;
+        background: #f8f9fa;
+        border-radius: 8px;
+    }
+    
+    .post-hero .hero-title {
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Keep all your existing 768px styles */
+    
+    /* Add this to ensure proper spacing */
+    .post-content {
+        order: 1;
+    }
+    
+    .post-sidebar {
+        order: 2;
+    }
+}
+
+@media (max-width: 768px) {
+    .post-content {
+        padding-bottom: 2rem;
+        border-bottom: 1px solid #eee;
+        margin-bottom: 2rem;
+    }
+}
+
+
+@media (max-width: 768px) {
+    .sidebar-widget {
+        margin-bottom: 1.5rem;
+    }
+    
+    .popular-post {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .popular-post img {
+        width: 100%;
+        height: auto;
+        margin-bottom: 1rem;
+    }
+}
