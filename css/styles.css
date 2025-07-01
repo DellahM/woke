@@ -3739,8 +3739,6 @@ footer {
 }
 
 
-/* Add this to your css/styles.css file */
-
 /* Blog Section Mobile-First Layout */
 .blog-container {
     display: flex;
@@ -3860,7 +3858,6 @@ footer {
 }
 
 
-/* Add this to your css/styles.css file - IMPORTANT: Add at the END of your CSS file */
 
 /* Blog Section Mobile-First Layout - Override existing styles */
 .section.blog-section .container.blog-container {
